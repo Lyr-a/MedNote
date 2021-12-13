@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/SintomasFragment">
+    <fragment
+        android:id="@+id/SintomasFragment"
+        android:name="com.example.mednote.SintomasFragment"
+        android:label="fragment_sintomas"
+        tools:layout="@layout/fragment_sintomas" />
+    <fragment
+        android:id="@+id/tratamentoFragment"
+        android:name="com.example.mednote.TratamentoFragment"
+        android:label="fragment_tratamento"
+        tools:layout="@layout/fragment_tratamento" />
+</navigation>
