@@ -1,8 +1,10 @@
 package com.example.mednote;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,7 +18,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  * Use the {@link SintomasFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class SintomasFragment extends Fragment {
+
+    //region BARULO
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +31,7 @@ public class SintomasFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private int NEW_ITEM_REQUEST = 1;
 
     public SintomasFragment() {
         // Required empty public constructor
@@ -58,19 +64,36 @@ public class SintomasFragment extends Fragment {
         }
     }
 
+    //endregion
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_sintomas, container, false);
+
         FloatingActionButton BtnNewSintoma = v.findViewById(R.id.FbtnSintomasCreate);
         BtnNewSintoma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getActivity(), SintomasAddActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, NEW_ITEM_REQUEST);
+
             }
         });
+
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == NEW_ITEM_REQUEST){
+            if (resultCode == Activity.RESULT_OK){
+
+            }
+        }
     }
 }

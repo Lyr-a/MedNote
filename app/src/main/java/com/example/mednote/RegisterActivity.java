@@ -33,11 +33,12 @@ public class RegisterActivity extends AppCompatActivity {
         SpnRegistroBloodRh.setAdapter(RhAdapter);
 
         //endregion
+
         BtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 

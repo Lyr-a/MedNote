@@ -19,6 +19,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class TratamentoFragment extends Fragment {
 
+    //region BARULHO
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -60,15 +61,20 @@ public class TratamentoFragment extends Fragment {
     }
 
     @Override
+    //endregion
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_tratamento, container, false);
+
+
         FloatingActionButton FbtnTratamentoCreate = v.findViewById(R.id.FbtnTratamentoCreate);
+
+
         FbtnTratamentoCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), RegisterActivity.class);
+                Intent i = new Intent(getActivity(), TratamentoAddActivity.class);
                 startActivity(i);
             }
         });
