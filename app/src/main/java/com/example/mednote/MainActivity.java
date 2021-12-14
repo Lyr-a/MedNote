@@ -24,11 +24,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new SintomasFragment()).commit();
+
         //region VIEWS
 
         bottomNavigationView = findViewById(R.id.BtmnavMain);
 
         //endregion
+
         //region BOTTOMNAV
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //endregion
+
         //region LOGIN
         Login();
         //endregion

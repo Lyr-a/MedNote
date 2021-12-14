@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 Cpf = EtLoginCpf.getText().toString();
                 Pass = EtLoginPassword.getText().toString();
 
-                if (Cpf.equals("1234") || Pass.equals("adm")) {
+                if (Cpf.equals("1234") && Pass.equals("adm")) {
                     int L = 1;
                     Intent login = new Intent();
                     login.putExtra("CPF", Cpf);
