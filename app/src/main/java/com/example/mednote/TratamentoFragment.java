@@ -1,8 +1,10 @@
 package com.example.mednote;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -28,6 +30,7 @@ public class TratamentoFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    static int NEW_ITEM_REQUEST = 1;
 
     public TratamentoFragment() {
         // Required empty public constructor
@@ -62,6 +65,7 @@ public class TratamentoFragment extends Fragment {
 
     @Override
     //endregion
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -75,9 +79,21 @@ public class TratamentoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), TratamentoAddActivity.class);
-                startActivity(i);
+                startActivityForResult(i, NEW_ITEM_REQUEST);
             }
         });
         return v;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == NEW_ITEM_REQUEST){
+            if (resultCode == Activity.RESULT_OK){
+               // String TraTitle = data.getStringExtra("TraTitle");
+               // String TraDesc = data.getStringExtra("TraDesc");
+               // TratamentoItem novoTratamento = new TratamentoItem();
+            }
+        }
     }
 }

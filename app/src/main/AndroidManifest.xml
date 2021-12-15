@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedNote">
         <activity
+            android:name=".TratamentoZoomActivity"
+            android:exported="true" />
+        <activity
             android:name=".SintomasZoomActivity"
             android:exported="false" />
         <activity
@@ -33,7 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
