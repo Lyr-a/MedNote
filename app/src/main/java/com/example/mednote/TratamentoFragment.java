@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +36,7 @@ public class TratamentoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     static int NEW_ITEM_REQUEST = 1;
+    List<TratamentoItem> TraItens = new ArrayList<>();
 
     public TratamentoFragment() {
         // Required empty public constructor
@@ -73,6 +79,7 @@ public class TratamentoFragment extends Fragment {
 
 
         FloatingActionButton FbtnTratamentoCreate = v.findViewById(R.id.FbtnTratamentoCreate);
+        RecyclerView RvTraItens = v.findViewById(R.id.RvTratamento);
 
 
         FbtnTratamentoCreate.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +89,13 @@ public class TratamentoFragment extends Fragment {
                 startActivityForResult(i, NEW_ITEM_REQUEST);
             }
         });
+
+        TratamentoAdapter tratamentoAdapter = new TratamentoAdapter(this, TraItens);
+        RvTraItens.setHasFixedSize(true);
+        RecyclerView.LayoutManager TraLayoutManager = new LinearLayoutManager(getActivity());
+        RvTraItens.setLayoutManager(TraLayoutManager);
+        RvTraItens.setAdapter(tratamentoAdapter);
+
         return v;
     }
 
@@ -90,9 +104,14 @@ public class TratamentoFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == NEW_ITEM_REQUEST){
             if (resultCode == Activity.RESULT_OK){
-               // String TraTitle = data.getStringExtra("TraTitle");
-               // String TraDesc = data.getStringExtra("TraDesc");
-               // TratamentoItem novoTratamento = new TratamentoItem();
+               String TraTitle = data.getStringExtra("TraTitle");
+               String TraDesc = data.getStringExtra("TraDesc");
+               TratamentoItem novoTratamento = new TratamentoItem();
+                novoTratamento.Title = TraTitle;
+                novoTratamento.Desc = TraDesc;
+
+                TraItens.add(novoTratamento);
+
             }
         }
     }
