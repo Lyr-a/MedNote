@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/TvSintomaTitle"
+        android:id="@+id/TvSinTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -31,7 +31,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/TvSintomaDesc"
+        android:id="@+id/TvSinDesc"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -43,5 +43,5 @@
         app:layout_constraintEnd_toStartOf="@+id/ImvSintomaPhoto"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TvSintomaTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/TvSinTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

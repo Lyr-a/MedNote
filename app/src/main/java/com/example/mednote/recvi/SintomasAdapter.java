@@ -17,9 +17,9 @@ import java.util.List;
 public class SintomasAdapter extends RecyclerView.Adapter{
 
     SintomasFragment sintomasFragment;
-    List<TratamentoItem> SinItens;
+    List<SintomasItem> SinItens;
 
-    public SintomasAdapter(SintomasFragment sintomasFragment, List<SintomasItem> sinItens) {
+    public SintomasAdapter(SintomasFragment sintomasFragment, List<SintomasItem> SinItens) {
         this.sintomasFragment = sintomasFragment;
         this.SinItens = SinItens;
 
@@ -30,18 +30,18 @@ public class SintomasAdapter extends RecyclerView.Adapter{
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater SinInflater;
         SinInflater = LayoutInflater.from(sintomasFragment.getContext());
-        View v = SinInflater.inflate(R.layout.item_tratamento_list, parent, false);
+        View v = SinInflater.inflate(R.layout.item_sintoma_list, parent, false);
         return new SintomaViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        TratamentoItem tratamentoItem = SinItens.get(position);
+        SintomasItem sintomasItem = SinItens.get(position);
         View v = holder.itemView;
-        TextView Title = v.findViewById(R.id.TvSintomaTitle);
-        TextView Desc  = v.findViewById(R.id.TvSintomaDesc);
-        Title.setText(tratamentoItem.Title);
-        Desc.setText(tratamentoItem.Desc);
+        TextView Title = v.findViewById(R.id.TvSinTitle);
+        TextView Desc  = v.findViewById(R.id.TvSinDesc);
+        Title.setText(sintomasItem.Title);
+        Desc.setText(sintomasItem.Desc);
     }
 
     @Override

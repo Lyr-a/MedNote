@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import com.example.mednote.R;
 import com.example.mednote.recvi.SintomasAdapter;
 import com.example.mednote.recvi.SintomasItem;
-import com.example.mednote.recvi.TratamentoAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -114,11 +113,11 @@ public class SintomasFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        {
-            super.onActivityResult(requestCode, resultCode, data);
+        { super.onActivityResult(requestCode, resultCode, data);
             if (requestCode == NEW_ITEM_REQUEST) {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
+
                         String STitle = data.getStringExtra("SinTitle");
                         String SDesc = data.getStringExtra("SinDesc");
 

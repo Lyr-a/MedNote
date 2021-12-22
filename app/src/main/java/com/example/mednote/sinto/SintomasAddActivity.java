@@ -38,6 +38,7 @@ public class SintomasAddActivity extends AppCompatActivity {
                     Toast.makeText(SintomasAddActivity.this, "Você Precisa inserir uma descrição", Toast.LENGTH_LONG).show();
                     return;
                 }
+
                 Intent intent = new Intent();
                 intent.putExtra("SinTitle", SinTitulo);
                 intent.putExtra("SinDesc", SinDesc);

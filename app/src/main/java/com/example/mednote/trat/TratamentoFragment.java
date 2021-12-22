@@ -101,7 +101,7 @@ public class TratamentoFragment extends Fragment {
         FbtnTratamentoCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), SintomasAddActivity.class);
+                Intent i = new Intent(getActivity(), TratamentoAddActivity.class);
                 startActivityForResult(i, NEW_ITEM_REQUEST);
             }
         });
