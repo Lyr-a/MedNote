@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mednote.MainActivity;
 import com.example.mednote.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -46,7 +47,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 Cpf = EtLoginCpf.getText().toString();
                 Pass = EtLoginPassword.getText().toString();
-
+                Config.setLogin(LoginActivity.this, Cpf);
+                Config.setPassword(LoginActivity.this, Pass);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                /*
                 if (Cpf.equals("1234") && Pass.equals("adm")) {
                     int L = 1;
                     Intent login = new Intent();
@@ -60,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(LoginActivity.this, "Digite as credenciais corretas", Toast.LENGTH_SHORT).show();
                 }
+                 */
             }
         });
 

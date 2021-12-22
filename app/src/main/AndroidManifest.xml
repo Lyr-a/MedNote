@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedNote">
         <activity
+            android:name=".PonteActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".trat.TratamentoZoomActivity"
             android:exported="true" />
         <activity
@@ -30,11 +40,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

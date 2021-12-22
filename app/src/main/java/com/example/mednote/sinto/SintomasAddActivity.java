@@ -29,13 +29,13 @@ public class SintomasAddActivity extends AppCompatActivity {
 
                 String SinTitulo = EtSintomaAddTitle.getText().toString();
                 if (SinTitulo.isEmpty()){
-                    Toast.makeText(SintomasAddActivity.this, "Você Precisa inserir um título", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SintomasAddActivity.this, "Você Precisa inserir um título", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 String SinDesc = EtSintomaAddDesc.getText().toString();
                 if (SinDesc.isEmpty()){
-                    Toast.makeText(SintomasAddActivity.this, "Você Precisa inserir uma descrição", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SintomasAddActivity.this, "Você Precisa inserir uma descrição", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

@@ -54,30 +54,6 @@ public class MainActivity extends AppCompatActivity {
         });
         //endregion
 
-        //region LOGIN
-        Login();
-        //endregion
     }
-
-    //region LOGIN
-
-    public void Login (){
-        if (Log == false){
-            Intent i = new Intent(MainActivity.this, LoginActivity.class);
-            Log = true;
-            startActivityForResult(i, NEW_ITEM_REQUEST);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == NEW_ITEM_REQUEST){
-            if (resultCode == Activity.RESULT_OK){
-
-            }
-        }
-    }
-    //endregion
 
 }

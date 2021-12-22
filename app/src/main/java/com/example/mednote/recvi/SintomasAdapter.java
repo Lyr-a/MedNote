@@ -1,5 +1,6 @@
 package com.example.mednote.recvi;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mednote.R;
 import com.example.mednote.sinto.SintomaViewHolder;
 import com.example.mednote.sinto.SintomasFragment;
+import com.example.mednote.sinto.SintomasZoomActivity;
 
 import java.util.List;
 
@@ -42,6 +44,13 @@ public class SintomasAdapter extends RecyclerView.Adapter{
         TextView Desc  = v.findViewById(R.id.TvSinDesc);
         Title.setText(sintomasItem.Title);
         Desc.setText(sintomasItem.Desc);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(sintomasFragment.getContext(), SintomasZoomActivity.class);
+                sintomasFragment.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
