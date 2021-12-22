@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -26,6 +25,11 @@ import java.util.List;
  */
 public class TratamentoFragment extends Fragment {
 
+
+    static int NEW_ITEM_REQUEST = 1;
+    List<TratamentoItem> TraItens = new ArrayList<>();
+    TratamentoAdapter tratamentoAdapter;
+
     //region BARULHO
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,8 +39,6 @@ public class TratamentoFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    static int NEW_ITEM_REQUEST = 1;
-    List<TratamentoItem> TraItens = new ArrayList<>();
 
     public TratamentoFragment() {
         // Required empty public constructor
@@ -79,8 +81,18 @@ public class TratamentoFragment extends Fragment {
 
 
         FloatingActionButton FbtnTratamentoCreate = v.findViewById(R.id.FbtnTratamentoCreate);
-        RecyclerView RvTraItens = v.findViewById(R.id.RvTratamento);
 
+
+
+
+        tratamentoAdapter = new TratamentoAdapter(this, TraItens);
+
+        RecyclerView RvTratamento = v.findViewById(R.id.RvTratamento);
+        RvTratamento.setHasFixedSize(true);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        RvTratamento.setLayoutManager(layoutManager);
+        RvTratamento.setAdapter(tratamentoAdapter);
 
         FbtnTratamentoCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,12 +102,6 @@ public class TratamentoFragment extends Fragment {
             }
         });
 
-        TratamentoAdapter tratamentoAdapter = new TratamentoAdapter(this, TraItens);
-        RvTraItens.setHasFixedSize(true);
-        RecyclerView.LayoutManager TraLayoutManager = new LinearLayoutManager(getActivity());
-        RvTraItens.setLayoutManager(TraLayoutManager);
-        RvTraItens.setAdapter(tratamentoAdapter);
-
         return v;
     }
 
@@ -104,14 +110,19 @@ public class TratamentoFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == NEW_ITEM_REQUEST){
             if (resultCode == Activity.RESULT_OK){
-               String TraTitle = data.getStringExtra("TraTitle");
-               String TraDesc = data.getStringExtra("TraDesc");
-               TratamentoItem novoTratamento = new TratamentoItem();
-                novoTratamento.Title = TraTitle;
-                novoTratamento.Desc = TraDesc;
+                if (data != null) {
+                    String TTitle = data.getStringExtra("TraTitle");
+                    String TDesc = data.getStringExtra("TraDesc");
 
-                TraItens.add(novoTratamento);
+                    TratamentoItem novoTratamento = new TratamentoItem();
 
+                    novoTratamento.Title = TTitle;
+                    novoTratamento.Desc = TDesc;
+
+                    TraItens.add(novoTratamento);
+
+                    tratamentoAdapter.notifyItemInserted(TraItens.size()-1);
+                }
             }
         }
     }

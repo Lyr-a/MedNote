@@ -5,7 +5,7 @@
     <string-array name="generos">
         <item>Masculino</item>
         <item>Feminino</item>
-        <item>Neutro</item>
+        <item>Outro</item>
         <item>Prefiro não informar</item>
     </string-array>
     <string-array name="tipos_sanguineos">

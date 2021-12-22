@@ -3,6 +3,7 @@ package com.example.mednote;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,18 +24,23 @@ public class TratamentoAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater TraInflater;
-        TraInflater = LayoutInflater.from(tratamentoFragment);
+        TraInflater = LayoutInflater.from(tratamentoFragment.getContext());
         View v = TraInflater.inflate(R.layout.item_tratamento_list, parent, false);
         return new TratamentoViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+        TratamentoItem tratamentoItem = TraItens.get(position);
+        View v = holder.itemView;
+        TextView Title = v.findViewById(R.id.TvTraTitle);
+        TextView Desc  = v.findViewById(R.id.TvTraDesc);
+        Title.setText(tratamentoItem.Title);
+        Desc.setText(tratamentoItem.Desc);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return TraItens.size();
     }
 }

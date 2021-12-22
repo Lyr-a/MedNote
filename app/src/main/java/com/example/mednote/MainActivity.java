@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, new SintomasFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.FcvMain, new SintomasFragment()).commit();
 
         //region VIEWS
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new TratamentoFragment();
                         break;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, fragment).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.FcvMain, fragment).commit();
                 return true;
             }
         });
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(i, NEW_ITEM_REQUEST);
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -75,4 +76,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //endregion
+
 }

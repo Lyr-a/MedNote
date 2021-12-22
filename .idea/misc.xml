@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_sintomas_add.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_tratamento_add.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_tratamento_zoom.xml" value="0.18" />
-        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/fragment_tratamento.xml" value="0.21875" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/fragment_sintomas.xml" value="0.33" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/fragment_tratamento.xml" value="0.33" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/item_sintoma_list.xml" value="0.67" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/item_tratamento_list.xml" value="0.5" />
       </map>
