@@ -1,4 +1,4 @@
-package com.example.mednote;
+package com.example.mednote.logi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+
+import com.example.mednote.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

@@ -6,12 +6,12 @@
     app:startDestination="@id/SintomasFragment">
     <fragment
         android:id="@+id/SintomasFragment"
-        android:name="com.example.mednote.SintomasFragment"
+        android:name="com.example.mednote.sinto.SintomasFragment"
         android:label="fragment_sintomas"
         tools:layout="@layout/fragment_sintomas" />
     <fragment
         android:id="@+id/tratamentoFragment"
-        android:name="com.example.mednote.TratamentoFragment"
+        android:name="com.example.mednote.trat.TratamentoFragment"
         android:label="fragment_tratamento"
         tools:layout="@layout/fragment_tratamento" />
 </navigation>

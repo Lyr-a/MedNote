@@ -1,8 +1,10 @@
-package com.example.mednote;
+package com.example.mednote.trat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.mednote.R;
 
 public class TratamentoZoomActivity extends AppCompatActivity {
 

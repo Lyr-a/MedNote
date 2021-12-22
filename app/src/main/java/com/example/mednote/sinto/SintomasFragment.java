@@ -1,4 +1,4 @@
-package com.example.mednote;
+package com.example.mednote.sinto;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,12 +6,21 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mednote.R;
+import com.example.mednote.recvi.SintomasAdapter;
+import com.example.mednote.recvi.SintomasItem;
+import com.example.mednote.recvi.TratamentoAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +29,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 
 public class SintomasFragment extends Fragment {
+
+
+    static int NEW_ITEM_REQUEST = 1;
+    List<SintomasItem> SinItens = new ArrayList<>();
+    SintomasAdapter sintomasAdapter;
 
     //region BARULO
 
@@ -31,7 +45,6 @@ public class SintomasFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private int NEW_ITEM_REQUEST = 1;
 
     public SintomasFragment() {
         // Required empty public constructor
@@ -70,10 +83,22 @@ public class SintomasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_sintomas, container, false);
 
         FloatingActionButton BtnNewSintoma = v.findViewById(R.id.FbtnSintomasCreate);
+
+
+
+        sintomasAdapter = new SintomasAdapter(this, SinItens);
+
+        RecyclerView RvSintomas = v.findViewById(R.id.RvSintomas);
+        RvSintomas.setHasFixedSize(true);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        RvSintomas.setLayoutManager(layoutManager);
+        RvSintomas.setAdapter(sintomasAdapter);
+
+
         BtnNewSintoma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,16 +111,28 @@ public class SintomasFragment extends Fragment {
 
         return v;
     }
-    /*
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         {
             super.onActivityResult(requestCode, resultCode, data);
             if (requestCode == NEW_ITEM_REQUEST) {
                 if (resultCode == Activity.RESULT_OK) {
+                    if (data != null) {
+                        String STitle = data.getStringExtra("SinTitle");
+                        String SDesc = data.getStringExtra("SinDesc");
 
+                        SintomasItem novoSintoma = new SintomasItem();
+
+                        novoSintoma.Title = STitle;
+                        novoSintoma.Desc = SDesc;
+
+                        SinItens.add(novoSintoma);
+
+                        sintomasAdapter.notifyItemInserted(SinItens.size()-1);
+                    }
                 }
             }
         }
-    }*/
+    }
 }

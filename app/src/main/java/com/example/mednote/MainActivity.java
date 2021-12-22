@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.mednote.logi.LoginActivity;
+import com.example.mednote.sinto.SintomasFragment;
+import com.example.mednote.trat.TratamentoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

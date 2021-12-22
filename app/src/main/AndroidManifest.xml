@@ -10,22 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedNote">
         <activity
-            android:name=".TratamentoZoomActivity"
+            android:name=".trat.TratamentoZoomActivity"
             android:exported="true" />
         <activity
-            android:name=".SintomasZoomActivity"
+            android:name=".sinto.SintomasZoomActivity"
             android:exported="false" />
         <activity
-            android:name=".TratamentoAddActivity"
+            android:name=".trat.TratamentoAddActivity"
             android:exported="false" />
         <activity
-            android:name=".SintomasAddActivity"
+            android:name=".sinto.SintomasAddActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".logi.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".logi.LoginActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

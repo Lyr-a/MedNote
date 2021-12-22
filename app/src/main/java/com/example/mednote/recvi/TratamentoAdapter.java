@@ -1,4 +1,4 @@
-package com.example.mednote;
+package com.example.mednote.recvi;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mednote.R;
+import com.example.mednote.trat.TratamentoFragment;
+import com.example.mednote.trat.TratamentoViewHolder;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.mednote;
+package com.example.mednote.trat;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mednote.R;
+import com.example.mednote.recvi.TratamentoAdapter;
+import com.example.mednote.recvi.TratamentoItem;
+import com.example.mednote.sinto.SintomasAddActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -97,7 +101,7 @@ public class TratamentoFragment extends Fragment {
         FbtnTratamentoCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), TratamentoAddActivity.class);
+                Intent i = new Intent(getActivity(), SintomasAddActivity.class);
                 startActivityForResult(i, NEW_ITEM_REQUEST);
             }
         });
