@@ -98,6 +98,39 @@ public class TratamentoFragment extends Fragment {
         RvTratamento.setLayoutManager(layoutManager);
         RvTratamento.setAdapter(tratamentoAdapter);
 
+        //region DADOS FANTASIA
+
+        TratamentoItem novoTratamento1 = new TratamentoItem();
+        novoTratamento1.Title = "TRATAMENTO 1";
+        novoTratamento1.Desc = "DESCRIÇÃO 1";
+        TraItens.add(novoTratamento1);
+        TratamentoItem novoTratamento2 = new TratamentoItem();
+        novoTratamento2.Title = "TRATAMENTO 2";
+        novoTratamento2.Desc = "DESCRIÇÃO 2";
+        TraItens.add(novoTratamento2);
+        TratamentoItem novoTratamento3 = new TratamentoItem();
+        novoTratamento3.Title = "TRATAMENTO 3";
+        novoTratamento3.Desc = "DESCRIÇÃO 3";
+        TraItens.add(novoTratamento3);
+        TratamentoItem novoTratamento4 = new TratamentoItem();
+        novoTratamento4.Title = "TRATAMENTO 4";
+        novoTratamento4.Desc = "DESCRIÇÃO 4";
+        TraItens.add(novoTratamento4);
+        TratamentoItem novoTratamento5 = new TratamentoItem();
+        novoTratamento5.Title = "TRATAMENTO 5";
+        novoTratamento5.Desc = "DESCRIÇÃO 5";
+        TraItens.add(novoTratamento5);
+        TratamentoItem novoTratamento6 = new TratamentoItem();
+        novoTratamento6.Title = "TRATAMENTO 6";
+        novoTratamento6.Desc = "DESCRIÇÃO 6";
+        TraItens.add(novoTratamento6);
+        TratamentoItem novoTratamento7 = new TratamentoItem();
+        novoTratamento7.Title = "TRATAMENTO 7";
+        novoTratamento7.Desc = "DESCRIÇÃO 7";
+        TraItens.add(novoTratamento7);
+
+        //endregion
+
         FbtnTratamentoCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

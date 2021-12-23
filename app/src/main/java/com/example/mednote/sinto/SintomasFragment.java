@@ -97,6 +97,38 @@ public class SintomasFragment extends Fragment {
         RvSintomas.setLayoutManager(layoutManager);
         RvSintomas.setAdapter(sintomasAdapter);
 
+        //region DADOS FANTASIA
+
+        SintomasItem novoSintoma1 = new SintomasItem();
+        novoSintoma1.Title = "SINTOMA 1";
+        novoSintoma1.Desc = "DESCRIÇÃO 1";
+        SinItens.add(novoSintoma1);
+        SintomasItem novoSintoma2 = new SintomasItem();
+        novoSintoma2.Title = "SINTOMA 2";
+        novoSintoma2.Desc = "DESCRIÇÃO 2";
+        SinItens.add(novoSintoma2);
+        SintomasItem novoSintoma3 = new SintomasItem();
+        novoSintoma3.Title = "SINTOMA 3";
+        novoSintoma3.Desc = "DESCRIÇÃO 3";
+        SinItens.add(novoSintoma3);
+        SintomasItem novoSintoma4 = new SintomasItem();
+        novoSintoma4.Title = "SINTOMA 4";
+        novoSintoma4.Desc = "DESCRIÇÃO 4";
+        SinItens.add(novoSintoma4);
+        SintomasItem novoSintoma5 = new SintomasItem();
+        novoSintoma5.Title = "SINTOMA 5";
+        novoSintoma5.Desc = "DESCRIÇÃO 5";
+        SinItens.add(novoSintoma5);
+        SintomasItem novoSintoma6 = new SintomasItem();
+        novoSintoma6.Title = "SINTOMA 6";
+        novoSintoma6.Desc = "DESCRIÇÃO 6";
+        SinItens.add(novoSintoma6);
+        SintomasItem novoSintoma7 = new SintomasItem();
+        novoSintoma7.Title = "SINTOMA 7";
+        novoSintoma7.Desc = "DESCRIÇÃO 7";
+        SinItens.add(novoSintoma7);
+
+        //endregion
 
         BtnNewSintoma.setOnClickListener(new View.OnClickListener() {
             @Override
