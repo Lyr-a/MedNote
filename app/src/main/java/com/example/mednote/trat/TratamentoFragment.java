@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -87,7 +92,17 @@ public class TratamentoFragment extends Fragment {
         FloatingActionButton FbtnTratamentoCreate = v.findViewById(R.id.FbtnTratamentoCreate);
 
 
+        Toolbar toolbar = v.findViewById(R.id.TbTraMain);
 
+        //region TOOLBAR
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        //Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+
+        //endregion
+
+        //region RECYCLER VIEW
 
         tratamentoAdapter = new TratamentoAdapter(this, TraItens);
 
@@ -97,6 +112,8 @@ public class TratamentoFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         RvTratamento.setLayoutManager(layoutManager);
         RvTratamento.setAdapter(tratamentoAdapter);
+
+        //endregion
 
         //region DADOS FANTASIA
 
@@ -140,6 +157,13 @@ public class TratamentoFragment extends Fragment {
         });
 
         return v;
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.tratamento_main_toolbar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override

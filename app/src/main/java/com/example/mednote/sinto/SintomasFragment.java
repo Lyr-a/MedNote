@@ -1,31 +1,37 @@
 package com.example.mednote.sinto;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.mednote.PonteActivity;
 import com.example.mednote.R;
+import com.example.mednote.logi.Config;
 import com.example.mednote.recvi.SintomasAdapter;
 import com.example.mednote.recvi.SintomasItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SintomasFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.Objects;
 
 public class SintomasFragment extends Fragment {
 
@@ -70,6 +76,7 @@ public class SintomasFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -86,8 +93,15 @@ public class SintomasFragment extends Fragment {
 
         FloatingActionButton BtnNewSintoma = v.findViewById(R.id.FbtnSintomasCreate);
 
+        Toolbar toolbar = v.findViewById(R.id.TbSinMain);
 
+        //region TOOLBAR
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        //Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        //endregion
 
+        //region RECYCLER VIEW
         sintomasAdapter = new SintomasAdapter(this, SinItens);
 
         RecyclerView RvSintomas = v.findViewById(R.id.RvSintomas);
@@ -96,6 +110,8 @@ public class SintomasFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         RvSintomas.setLayoutManager(layoutManager);
         RvSintomas.setAdapter(sintomasAdapter);
+
+        //endregion
 
         //region DADOS FANTASIA
 
@@ -141,6 +157,47 @@ public class SintomasFragment extends Fragment {
         });
 
         return v;
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.sintomas_main_toolbar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.OpShare){
+            //Ação de Enviar o Gmail
+            Intent i = new Intent(Intent.ACTION_SENDTO);
+            i.setData(Uri.parse("mailto:"));
+
+            //Acoplando os dados ao intent
+            i.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
+            i.putExtra(Intent.EXTRA_SUBJECT, "RELATÓRIO MEDNOTE");
+            i.putExtra(Intent.EXTRA_TEXT, "Segue em anexo");
+
+            //Testa se o usuário possui algum app para gmail
+            try {
+                //ativa o intent
+                startActivity(i);
+            }
+            //Exibe mensagem de erro caso não tenha
+            catch (ActivityNotFoundException e){
+                Toast.makeText(getContext(), "Não há nenhuma app de gmail instalada", Toast.LENGTH_SHORT);
+            }
+
+        }
+        if (id == R.id.OpSair){
+            Config.setLogin(getContext(), "");
+            Config.setPassword(getContext(), "");
+            Intent ponte = new Intent(getContext(), PonteActivity.class);
+            startActivity(ponte);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -166,4 +223,6 @@ public class SintomasFragment extends Fragment {
             }
         }
     }
+
+
 }

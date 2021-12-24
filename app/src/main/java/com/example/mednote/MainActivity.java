@@ -3,6 +3,7 @@ package com.example.mednote;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         //endregion
 
+
+
         //region BOTTOMNAV
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -54,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
         });
         //endregion
 
+
+
     }
+
+
 
 }
