@@ -49,6 +49,8 @@ public class TratamentoAdapter extends RecyclerView.Adapter {
                 Intent intent = new Intent(tratamentoFragment.getContext(), TratamentoZoomActivity.class);
                 intent.putExtra("Titulo", tratamentoItem.Title);
                 intent.putExtra("Desc", tratamentoItem.Desc);
+                intent.putExtra("Data", tratamentoItem.Data);
+                intent.putExtra("Hora", tratamentoItem.Hora);
                 tratamentoFragment.getContext().startActivity(intent);
             }
         });
