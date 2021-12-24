@@ -3,6 +3,9 @@ package com.example.mednote.sinto;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -38,7 +41,8 @@ public class SintomasFragment extends Fragment {
 
     static int NEW_ITEM_REQUEST = 1;
     List<SintomasItem> SinItens = new ArrayList<>();
-    SintomasAdapter sintomasAdapter;
+    SintomasAdapter sintomasAdapter;;
+    private static final int CREATEPDF = 1;
 
     //region BARULO
 
@@ -170,24 +174,8 @@ public class SintomasFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.OpShare){
-            //Ação de Enviar o Gmail
-            Intent i = new Intent(Intent.ACTION_SENDTO);
-            i.setData(Uri.parse("mailto:"));
-
-            //Acoplando os dados ao intent
-            i.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
-            i.putExtra(Intent.EXTRA_SUBJECT, "RELATÓRIO MEDNOTE");
-            i.putExtra(Intent.EXTRA_TEXT, "Segue em anexo");
-
-            //Testa se o usuário possui algum app para gmail
-            try {
-                //ativa o intent
-                startActivity(i);
-            }
-            //Exibe mensagem de erro caso não tenha
-            catch (ActivityNotFoundException e){
-                Toast.makeText(getContext(), "Não há nenhuma app de gmail instalada", Toast.LENGTH_SHORT);
-            }
+            createPdf();
+            shareGmail();
 
         }
         if (id == R.id.OpSair){
@@ -200,6 +188,48 @@ public class SintomasFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+    private void createPdf() {
+
+        /*
+        int tamanho = (SinItens.size() + 1);
+        if ((tamanho%3)!=0){
+            tamanho = (tamanho/3) + 1;
+        }
+        else{
+            tamanho = tamanho/3;
+        }
+
+        PdfDocument relatorio = new PdfDocument();
+        Paint myPaint = new Paint();
+        PdfDocument.PageInfo relatorioinfo = new PdfDocument.PageInfo.Builder(1200, 2010, tamanho).create();
+        PdfDocument.Page relatoriopage = relatorio.startPage(relatorioinfo);
+
+x
+         */
+    }
+    private void shareGmail() {
+        //Ação de Enviar o Gmail
+        Intent i = new Intent(Intent.ACTION_SENDTO);
+        i.setData(Uri.parse("mailto:"));
+
+        //Acoplando os dados ao intent
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
+        i.putExtra(Intent.EXTRA_SUBJECT, "RELATÓRIO MEDNOTE");
+        i.putExtra(Intent.EXTRA_TEXT, "Segue em anexo");
+
+        //Testa se o usuário possui algum app para gmail
+        try {
+            //ativa o intent
+            startActivity(i);
+        }
+        //Exibe mensagem de erro caso não tenha
+        catch (ActivityNotFoundException e){
+            Toast.makeText(getContext(), "Não há nenhuma app de gmail instalada", Toast.LENGTH_SHORT);
+        }
+    }
+
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         { super.onActivityResult(requestCode, resultCode, data);
@@ -209,11 +239,15 @@ public class SintomasFragment extends Fragment {
 
                         String STitle = data.getStringExtra("SinTitle");
                         String SDesc = data.getStringExtra("SinDesc");
+                        String SDia = data.getStringExtra("SinDia");
+                        String SHora = data.getStringExtra("SinHora");
 
                         SintomasItem novoSintoma = new SintomasItem();
 
                         novoSintoma.Title = STitle;
                         novoSintoma.Desc = SDesc;
+                        novoSintoma.Data = SDia;
+                        novoSintoma.Hora = SHora;
 
                         SinItens.add(novoSintoma);
 
@@ -223,6 +257,4 @@ public class SintomasFragment extends Fragment {
             }
         }
     }
-
-
 }

@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import com.example.mednote.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class SintomasAddActivity extends AppCompatActivity {
 
     @Override
@@ -24,8 +28,11 @@ public class SintomasAddActivity extends AppCompatActivity {
         BtnSintomasAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 EditText EtSintomaAddDesc = findViewById(R.id.EtSintomaAddDesc);
                 EditText EtSintomaAddTitle = findViewById(R.id.EtSintomaAddTitle);
+                String Hora = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+                String Dia = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
                 String SinTitulo = EtSintomaAddTitle.getText().toString();
                 if (SinTitulo.isEmpty()){
@@ -42,6 +49,9 @@ public class SintomasAddActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("SinTitle", SinTitulo);
                 intent.putExtra("SinDesc", SinDesc);
+                intent.putExtra("SinHora", Hora);
+                intent.putExtra("SinDia", Dia);
+
                 setResult(Activity.RESULT_OK, intent);
                 finish();
             }

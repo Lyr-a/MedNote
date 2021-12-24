@@ -12,6 +12,10 @@ import android.widget.Toast;
 import com.example.mednote.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class TratamentoAddActivity extends AppCompatActivity {
 
     @Override
@@ -32,6 +36,8 @@ public class TratamentoAddActivity extends AppCompatActivity {
 
                 EditText EtTratamentoAddDesc = findViewById(R.id.EtTratamentoAddDesc);
                 EditText EtTratamentoAddTitle = findViewById(R.id.EtTratamentoAddTitle);
+                String Hora = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+                String Dia = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
                 String TraTitulo = EtTratamentoAddTitle.getText().toString();
                 if (TraTitulo.isEmpty()){
@@ -48,6 +54,8 @@ public class TratamentoAddActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("TraTitle", TraTitulo);
                 intent.putExtra("TraDesc", TraDesc);
+                intent.putExtra("TraHora", Hora);
+                intent.putExtra("TraDia", Dia);
                 setResult(Activity.RESULT_OK, intent);
                 finish();
             }

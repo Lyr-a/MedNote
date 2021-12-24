@@ -174,11 +174,15 @@ public class TratamentoFragment extends Fragment {
                 if (data != null) {
                     String TTitle = data.getStringExtra("TraTitle");
                     String TDesc = data.getStringExtra("TraDesc");
+                    String TDia = data.getStringExtra("TraDia");
+                    String THora = data.getStringExtra("TraHora");
 
                     TratamentoItem novoTratamento = new TratamentoItem();
 
                     novoTratamento.Title = TTitle;
                     novoTratamento.Desc = TDesc;
+                    novoTratamento.Data = TDia;
+                    novoTratamento.Hora = THora;
 
                     TraItens.add(novoTratamento);
 

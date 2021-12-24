@@ -16,17 +16,23 @@ public class SintomasZoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sintomas_zoom);
-        String Title, Desc;
+        String Title, Desc, Dia, Hora;
 
         TextView TvTitle = findViewById(R.id.TvSinZoomTitle);
         TextView TvDesc = findViewById(R.id.TvSinZoomDesc);
+        TextView TvData = findViewById(R.id.TvSinZoomData);
+        TextView TvHora = findViewById(R.id.TvSinZoomHora);
 
         Intent intent = getIntent();
 
         Title = intent.getStringExtra("Titulo");
         Desc = intent.getStringExtra("Desc");
+        Dia = intent.getStringExtra("Data");
+        Hora = intent.getStringExtra("Hora");
 
         TvTitle.setText(Title);
         TvDesc.setText(Desc);
+        TvData.setText(Dia);
+        TvHora.setText(Hora);
     }
 }

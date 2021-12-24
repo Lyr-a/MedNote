@@ -50,6 +50,8 @@ public class SintomasAdapter extends RecyclerView.Adapter{
                 Intent intent = new Intent(sintomasFragment.getContext(), SintomasZoomActivity.class);
                 intent.putExtra("Titulo", sintomasItem.Title);
                 intent.putExtra("Desc", sintomasItem.Desc);
+                intent.putExtra("Data", sintomasItem.Data);
+                intent.putExtra("Hora", sintomasItem.Hora);
                 sintomasFragment.getContext().startActivity(intent);
             }
         });
