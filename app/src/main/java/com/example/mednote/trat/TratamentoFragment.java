@@ -92,14 +92,6 @@ public class TratamentoFragment extends Fragment {
         FloatingActionButton FbtnTratamentoCreate = v.findViewById(R.id.FbtnTratamentoCreate);
 
 
-        Toolbar toolbar = v.findViewById(R.id.TbTraMain);
-
-        //region TOOLBAR
-
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.setSupportActionBar(toolbar);
-        //Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
         //endregion
 
         //region RECYCLER VIEW
@@ -159,12 +151,6 @@ public class TratamentoFragment extends Fragment {
         return v;
     }
 
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.tratamento_main_toolbar, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
