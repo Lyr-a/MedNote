@@ -97,13 +97,13 @@ public class SintomasFragment extends Fragment {
 
         FloatingActionButton BtnNewSintoma = v.findViewById(R.id.FbtnSintomasCreate);
 
-        Toolbar toolbar = v.findViewById(R.id.TbSinMain);
-
-        //region TOOLBAR
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.setSupportActionBar(toolbar);
+        /*
+        Toolbar toolbar = v.findViewById(R.id.TbMain);
+        setSupportActionBar(toolbar);
         //Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         //endregion
+
+         */
 
         //region RECYCLER VIEW
         sintomasAdapter = new SintomasAdapter(this, SinItens);
@@ -162,70 +162,6 @@ public class SintomasFragment extends Fragment {
 
         return v;
 
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.sintomas_main_toolbar, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.OpShare){
-            createPdf();
-            shareGmail();
-
-        }
-        if (id == R.id.OpSair){
-            Config.setLogin(getContext(), "");
-            Config.setPassword(getContext(), "");
-            Intent ponte = new Intent(getContext(), PonteActivity.class);
-            startActivity(ponte);
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void createPdf() {
-
-        /*
-        int tamanho = (SinItens.size() + 1);
-        if ((tamanho%3)!=0){
-            tamanho = (tamanho/3) + 1;
-        }
-        else{
-            tamanho = tamanho/3;
-        }
-
-        PdfDocument relatorio = new PdfDocument();
-        Paint myPaint = new Paint();
-        PdfDocument.PageInfo relatorioinfo = new PdfDocument.PageInfo.Builder(1200, 2010, tamanho).create();
-        PdfDocument.Page relatoriopage = relatorio.startPage(relatorioinfo);
-
-x
-         */
-    }
-    private void shareGmail() {
-        //Ação de Enviar o Gmail
-        Intent i = new Intent(Intent.ACTION_SENDTO);
-        i.setData(Uri.parse("mailto:"));
-
-        //Acoplando os dados ao intent
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
-        i.putExtra(Intent.EXTRA_SUBJECT, "RELATÓRIO MEDNOTE");
-        i.putExtra(Intent.EXTRA_TEXT, "Segue em anexo");
-
-        //Testa se o usuário possui algum app para gmail
-        try {
-            //ativa o intent
-            startActivity(i);
-        }
-        //Exibe mensagem de erro caso não tenha
-        catch (ActivityNotFoundException e){
-            Toast.makeText(getContext(), "Não há nenhuma app de gmail instalada", Toast.LENGTH_SHORT);
-        }
     }
 
 
