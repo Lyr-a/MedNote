@@ -97,14 +97,6 @@ public class SintomasFragment extends Fragment {
 
         FloatingActionButton BtnNewSintoma = v.findViewById(R.id.FbtnSintomasCreate);
 
-        /*
-        Toolbar toolbar = v.findViewById(R.id.TbMain);
-        setSupportActionBar(toolbar);
-        //Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        //endregion
-
-         */
-
         //region RECYCLER VIEW
         sintomasAdapter = new SintomasAdapter(this, SinItens);
 
@@ -173,6 +165,7 @@ public class SintomasFragment extends Fragment {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
 
+                        Uri Suri = data.getData();
                         String STitle = data.getStringExtra("SinTitle");
                         String SDesc = data.getStringExtra("SinDesc");
                         String SDia = data.getStringExtra("SinDia");
@@ -180,6 +173,7 @@ public class SintomasFragment extends Fragment {
 
                         SintomasItem novoSintoma = new SintomasItem();
 
+                        novoSintoma.photo = Suri;
                         novoSintoma.Title = STitle;
                         novoSintoma.Desc = SDesc;
                         novoSintoma.Data = SDia;

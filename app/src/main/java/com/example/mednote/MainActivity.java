@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Paint;
@@ -16,6 +17,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mednote.logi.Config;
@@ -23,6 +30,8 @@ import com.example.mednote.logi.LoginActivity;
 import com.example.mednote.sinto.SintomasFragment;
 import com.example.mednote.trat.TratamentoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.OpShare){
-            shareGmail();
+            ShareDialog();
+            //shareGmail();
 
         }
         if (id == R.id.OpSair){
@@ -95,13 +105,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void shareGmail() {
+
+    private void shareGmail(ArrayList<String> Infor) {
         //Ação de Enviar o Gmail
         Intent i = new Intent(Intent.ACTION_SENDTO);
+
         i.setData(Uri.parse("mailto:"));
 
         //Acoplando os dados ao intent
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{""});
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{Infor.get(4)});
         i.putExtra(Intent.EXTRA_SUBJECT, "RELATÓRIO MEDNOTE");
         i.putExtra(Intent.EXTRA_TEXT, "Segue em anexo");
 
@@ -109,13 +121,90 @@ public class MainActivity extends AppCompatActivity {
         try {
             //ativa o intent
             startActivity(i);
+
         }
         //Exibe mensagem de erro caso não tenha
         catch (ActivityNotFoundException e){
+
             Toast.makeText(MainActivity.this, "Não há nenhuma app de gmail instalada", Toast.LENGTH_SHORT);
+
         }
     }
 
+    private void ShareDialog() {
 
+        ArrayList<String> DiaInfo = new ArrayList<>();
+
+        Dialog dialog = new Dialog(MainActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.share_dialog);
+
+        //region VIEWS
+
+        Button BtnShare= dialog.findViewById(R.id.BtnShare);
+        CheckBox CbSin = dialog.findViewById(R.id.CbSintoma);
+        CheckBox CbTra = dialog.findViewById(R.id.CbTratamento);
+        Spinner SpnSin = dialog.findViewById(R.id.SpnSintoma);
+        Spinner SpnTra = dialog.findViewById(R.id.SpnTratamento);
+        Spinner SpnMed = dialog.findViewById(R.id.SpnMed);
+
+        //endregion
+
+        //region SPINNER
+
+        ArrayAdapter<CharSequence> MedAdapter = ArrayAdapter.createFromResource(this,
+                R.array.medicos, android.R.layout.simple_spinner_item);
+
+        ArrayAdapter<CharSequence> TempoAdapter = ArrayAdapter.createFromResource(this,
+                R.array.tempo, android.R.layout.simple_spinner_item);
+
+        SpnMed.setAdapter(MedAdapter);
+        SpnSin.setAdapter(TempoAdapter);
+        SpnTra.setAdapter(TempoAdapter);
+
+        //endregion
+
+        BtnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String Medico = SpnMed.getSelectedItem().toString();
+                String TemSin = SpnSin.getSelectedItem().toString();
+                String TemTra = SpnTra.getSelectedItem().toString();
+
+                if (Medico.equals("Gmail…")){
+                    Toast.makeText(MainActivity.this, "insira um endereço de gmail", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (!(CbSin.isChecked() || CbTra.isChecked())){
+                    Toast.makeText(MainActivity.this, "selecione algo para compartilhar", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                else{
+                    DiaInfo.add(TemSin);
+                    DiaInfo.add(TemTra);
+                    DiaInfo.add("0");
+                    DiaInfo.add("0");
+                    DiaInfo.add(Medico);
+
+                    if(CbSin.isChecked()){
+                        DiaInfo.set(2,"1");
+                    }
+                    if(CbTra.isChecked()){
+                        DiaInfo.set(3,"1");
+                    }
+                    dialog.dismiss();
+
+                    shareGmail(DiaInfo);
+
+                }
+            }
+        });
+
+        dialog.show();
+    }
 
 }

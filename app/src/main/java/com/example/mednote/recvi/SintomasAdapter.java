@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,12 +43,16 @@ public class SintomasAdapter extends RecyclerView.Adapter{
         View v = holder.itemView;
         TextView Title = v.findViewById(R.id.TvSinTitle);
         TextView Desc  = v.findViewById(R.id.TvSinDesc);
+        ImageView ImvPhoto = v.findViewById(R.id.ImvSintomaPhoto);
+        ImvPhoto.setImageURI(sintomasItem.photo);
         Title.setText(sintomasItem.Title);
         Desc.setText(sintomasItem.Desc);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(sintomasFragment.getContext(), SintomasZoomActivity.class);
+
+                intent.setData(sintomasItem.photo);
                 intent.putExtra("Titulo", sintomasItem.Title);
                 intent.putExtra("Desc", sintomasItem.Desc);
                 intent.putExtra("Data", sintomasItem.Data);

@@ -2,20 +2,42 @@
     <string name="app_name">MedNote</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string-array name="generos">
+        <item>Genero…</item>
         <item>Masculino</item>
         <item>Feminino</item>
         <item>Outro</item>
         <item>Prefiro não informar</item>
     </string-array>
+
     <string-array name="tipos_sanguineos">
-        <item>A</item>
-        <item>B</item>
-        <item>AB</item>
-        <item>O</item>
+        <item>Sangue…</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
     </string-array>
-    <string-array name="rh">
-        <item>+</item>
-        <item>-</item>
+
+    <string-array name="medicos">
+        <item>Gmail…</item>
+        <item>warlisson@gmail.com</item>
+        <item>lindon.jonson@gmail.com</item>
+        <item>uelinton@gmail.com</item>
+        <item>ernesto@gmail.com</item>
+        <item>joaotrem@gmail.com</item>
     </string-array>
+
+    <string-array name="tempo">
+        <item>Desde sempre</item>
+        <item>Esse semestre</item>
+        <item>Esse trimestre</item>
+        <item>Esse mês</item>
+        <item>Essa semana</item>
+    </string-array>
+
 </resources>

@@ -21,18 +21,14 @@ public class RegisterActivity extends AppCompatActivity {
         Button BtnRegister = findViewById(R.id.BtnRegister);
         Spinner SpnGenero = findViewById(R.id.SpnRegisterGender);
         Spinner SpnRegisterBloodType = findViewById(R.id.SpnRegisterBloodType);
-        Spinner SpnRegistroBloodRh = findViewById(R.id.SpnRegistroBloodRh);
         //endregion
         //region Spinners
         ArrayAdapter<CharSequence> GeneroAdapter = ArrayAdapter.createFromResource(this, R.array.generos,
                 android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> BloodAdapter = ArrayAdapter.createFromResource(this, R.array.tipos_sanguineos,
                 android.R.layout.simple_spinner_item);
-        ArrayAdapter<CharSequence> RhAdapter = ArrayAdapter.createFromResource(this, R.array.rh,
-                android.R.layout.simple_spinner_item);
         SpnGenero.setAdapter(GeneroAdapter);
         SpnRegisterBloodType.setAdapter(BloodAdapter);
-        SpnRegistroBloodRh.setAdapter(RhAdapter);
 
         //endregion
 

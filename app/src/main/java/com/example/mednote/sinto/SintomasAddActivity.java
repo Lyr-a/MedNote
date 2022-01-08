@@ -20,6 +20,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.mednote.R;
@@ -84,6 +85,7 @@ public class SintomasAddActivity extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent();
+                intent.setData (Uri.fromFile(new File(currentPhotoPath)));
                 intent.putExtra("SinTitle", SinTitulo);
                 intent.putExtra("SinDesc", SinDesc);
                 intent.putExtra("SinHora", Hora);
@@ -95,6 +97,8 @@ public class SintomasAddActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
 
     //region FOTO
@@ -135,6 +139,8 @@ public class SintomasAddActivity extends AppCompatActivity {
         if (requestCode == RESULT_TAKE_PICTURE){
             if (resultCode == Activity.RESULT_OK){
                 photos.add(currentPhotoPath);
+                ImageView ImvSin = findViewById(R.id.ImvSintomaAddPhoto);
+                ImvSin.setImageURI(Uri.fromFile(new File(currentPhotoPath)));
             }
             else{
                 File f = new File(currentPhotoPath);
@@ -200,5 +206,7 @@ public class SintomasAddActivity extends AppCompatActivity {
     }
 
     //endregion
+
+
 
 }
