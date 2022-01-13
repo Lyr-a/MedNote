@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/BASE"
     tools:context=".sinto.SintomasAddActivity">
 
     <EditText
@@ -44,7 +45,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Adicionar!"
+        android:backgroundTint="@color/BASE2"
+        android:text="Adicionar"
+        android:textColor="@color/BASE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -70,6 +73,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:clickable="true"
+        app:backgroundTint="@color/BASE2"
         app:layout_constraintBottom_toBottomOf="@+id/ImvSintomaAddPhoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_camera" />

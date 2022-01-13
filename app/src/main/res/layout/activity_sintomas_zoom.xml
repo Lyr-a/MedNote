@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/BASE"
     tools:context=".sinto.SintomasZoomActivity">
 
     <TextView
@@ -14,7 +15,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
+        android:textColor="@color/BASE2"
         android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +29,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="DATA"
+        android:textColor="@color/BASE2"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TvSinZoomTitle" />
@@ -37,6 +41,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:text="HORA"
+        android:textColor="@color/BASE2"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/TvSinZoomData"
         app:layout_constraintTop_toBottomOf="@+id/TvSinZoomTitle" />
@@ -50,6 +55,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="TextView"
+        android:textColor="@color/BASE2"
         app:layout_constraintBottom_toTopOf="@+id/ImvSinZoom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/BASE"
     tools:context=".trat.TratamentoAddActivity">
 
     <EditText
@@ -45,6 +46,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:clickable="true"
+        app:backgroundTint="@color/BASE2"
         app:layout_constraintBottom_toTopOf="@+id/FbtnTratamentoAdd"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_camera"
@@ -57,6 +59,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
         android:clickable="true"
+        app:backgroundTint="@color/BASE2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_check_24"

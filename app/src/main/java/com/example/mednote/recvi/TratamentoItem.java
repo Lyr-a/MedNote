@@ -1,7 +1,9 @@
 package com.example.mednote.recvi;
 
+import java.util.ArrayList;
+
 public class TratamentoItem {
-    //public Uri photo;
+    public ArrayList<String> Photos;
     public String Title;
     public String Desc;
     public String Data;

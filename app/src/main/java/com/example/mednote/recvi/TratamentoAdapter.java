@@ -1,12 +1,18 @@
 package com.example.mednote.recvi;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mednote.R;
@@ -41,6 +47,21 @@ public class TratamentoAdapter extends RecyclerView.Adapter {
         View v = holder.itemView;
         TextView Title = v.findViewById(R.id.TvTraTitle);
         TextView Desc  = v.findViewById(R.id.TvTraDesc);
+        ImageView ImvPrev = v.findViewById(R.id.ImvTraPrev);
+
+
+
+        if(tratamentoItem.Photos == null){
+            Uri IcImv = Uri.parse("android.resource://R.drawable.ic_not_image1.xml");
+            ImvPrev.setImageURI(IcImv);
+
+        }
+        else{
+            Uri IcAtt = Uri.parse("src/main/res/drawable/ic_attach.xml");
+            ImvPrev.setImageURI(IcAtt);
+
+        }
+
         Title.setText(tratamentoItem.Title);
         Desc.setText(tratamentoItem.Desc);
         v.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +72,7 @@ public class TratamentoAdapter extends RecyclerView.Adapter {
                 intent.putExtra("Desc", tratamentoItem.Desc);
                 intent.putExtra("Data", tratamentoItem.Data);
                 intent.putExtra("Hora", tratamentoItem.Hora);
+                intent.putStringArrayListExtra("Photo", tratamentoItem.Photos);
                 tratamentoFragment.getContext().startActivity(intent);
             }
         });

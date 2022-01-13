@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#CEEDED">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RvSintomas"
@@ -27,6 +28,7 @@
             android:layout_marginBottom="24dp"
             android:clickable="true"
             android:src="@drawable/ic_baseline_add_24"
+            app:backgroundTint="@color/BASE2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />

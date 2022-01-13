@@ -85,7 +85,9 @@ public class SintomasAddActivity extends AppCompatActivity {
                 }
 
                 Intent intent = new Intent();
-                intent.setData (Uri.fromFile(new File(currentPhotoPath)));
+                if (photos.size()>0){
+                    intent.setData (Uri.fromFile(new File(currentPhotoPath)));
+                }
                 intent.putExtra("SinTitle", SinTitulo);
                 intent.putExtra("SinDesc", SinDesc);
                 intent.putExtra("SinHora", Hora);

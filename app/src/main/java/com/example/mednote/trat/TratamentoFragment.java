@@ -2,6 +2,7 @@ package com.example.mednote.trat;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -84,10 +85,11 @@ public class TratamentoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View v = inflater.inflate(R.layout.fragment_tratamento, container, false);
 
-
         FloatingActionButton FbtnTratamentoCreate = v.findViewById(R.id.FbtnTratamentoCreate);
+
 
 
         //endregion
@@ -160,6 +162,7 @@ public class TratamentoFragment extends Fragment {
                     String TDesc = data.getStringExtra("TraDesc");
                     String TDia = data.getStringExtra("TraDia");
                     String THora = data.getStringExtra("TraHora");
+                    ArrayList<String> TPhotos = data.getStringArrayListExtra("TraPhotos");
 
                     TratamentoItem novoTratamento = new TratamentoItem();
 
@@ -167,6 +170,7 @@ public class TratamentoFragment extends Fragment {
                     novoTratamento.Desc = TDesc;
                     novoTratamento.Data = TDia;
                     novoTratamento.Hora = THora;
+                    novoTratamento.Photos = TPhotos;
 
                     TraItens.add(novoTratamento);
 
