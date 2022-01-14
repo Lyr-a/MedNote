@@ -6,21 +6,24 @@
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/drawable-anydpi/ic_action_name.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/drawable/ic_attach.xml" value="0.23489583333333333" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.403125" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/drawable/ic_image.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_register.xml" value="0.33" />
-        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_sintomas_add.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_sintomas_add.xml" value="0.25" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_sintomas_zoom.xml" value="0.33" />
-        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_tratamento_add.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_tratamento_add.xml" value="0.25" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/activity_tratamento_zoom.xml" value="0.33" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/fragment_sintomas.xml" value="0.33" />
-        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/fragment_tratamento.xml" value="0.33" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/fragment_tratamento.xml" value="0.25" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/item_sintoma_list.xml" value="0.33" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/item_tratamento_list.xml" value="0.5" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/item_zoom_trat_list.xml" value="0.265625" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/layout/share_dialog.xml" value="0.33" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/menu/sintomas_main_menu.xml" value="0.25" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/menu/toolbar_main.xml" value="0.33" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/menu/tratamento_main_toolbar.xml" value="0.33" />
+        <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.23541666666666666" />
         <entry key="..\:/Users/Gorge Luiz/AndroidStudioProjects/MedNote teste/MedNote/app/src/main/res/xml/file_paths.xml" value="0.25" />
       </map>
     </option>

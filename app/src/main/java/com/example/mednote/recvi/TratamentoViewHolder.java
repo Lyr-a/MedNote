@@ -1,4 +1,4 @@
-package com.example.mednote.trat;
+package com.example.mednote.recvi;
 
 import android.view.View;
 

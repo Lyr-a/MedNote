@@ -66,7 +66,12 @@ public class TratamentoAddActivity extends AppCompatActivity {
         FbtnPhotoAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dispatchTakePictureIntent();
+                if(photos.size()<5){
+                    dispatchTakePictureIntent();
+                }
+                else{
+                    Toast.makeText(TratamentoAddActivity.this, "Você atingiu o limite de fotos por tratamento", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -141,8 +146,6 @@ public class TratamentoAddActivity extends AppCompatActivity {
             if (requestCode == RESULT_TAKE_PICTURE){
                 if (resultCode == Activity.RESULT_OK){
                     photos.add(currentPhotoPath);
-                    ImageView ImvSin = findViewById(R.id.ImvSintomaAddPhoto);
-                    ImvSin.setImageURI(Uri.fromFile(new File(currentPhotoPath)));
                 }
                 else{
                     File f = new File(currentPhotoPath);

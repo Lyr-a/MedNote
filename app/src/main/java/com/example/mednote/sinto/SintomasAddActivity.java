@@ -78,6 +78,11 @@ public class SintomasAddActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (SinTitulo.length()>20){
+                    Toast.makeText(SintomasAddActivity.this, "O título pode ter 20 letras no máximo", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 String SinDesc = EtSintomaAddDesc.getText().toString();
                 if (SinDesc.isEmpty()){
                     Toast.makeText(SintomasAddActivity.this, "Você Precisa inserir uma descrição", Toast.LENGTH_SHORT).show();

@@ -109,6 +109,7 @@ public class TratamentoFragment extends Fragment {
 
         //region DADOS FANTASIA
 
+        /*
         TratamentoItem novoTratamento1 = new TratamentoItem();
         novoTratamento1.Title = "TRATAMENTO 1";
         novoTratamento1.Desc = "DESCRIÇÃO 1";
@@ -137,6 +138,8 @@ public class TratamentoFragment extends Fragment {
         novoTratamento7.Title = "TRATAMENTO 7";
         novoTratamento7.Desc = "DESCRIÇÃO 7";
         TraItens.add(novoTratamento7);
+
+         */
 
         //endregion
 

@@ -10,15 +10,17 @@
     <TextView
         android:id="@+id/TvSinZoomTitle"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:layout_marginBottom="8dp"
+        android:text="DOR NO BRAÇO "
         android:textColor="@color/BASE2"
-        android:textSize="28sp"
+        android:textSize="28dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/TvSinZoomDesc"
+        app:layout_constraintEnd_toStartOf="@+id/TvSinZoomHora"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,25 +28,25 @@
         android:id="@+id/TvSinZoomData"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="DATA"
         android:textColor="@color/BASE2"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TvSinZoomTitle" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/TvSinZoomHora"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="HORA"
         android:textColor="@color/BASE2"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/TvSinZoomData"
-        app:layout_constraintTop_toBottomOf="@+id/TvSinZoomTitle" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TvSinZoomData" />
 
     <TextView
         android:id="@+id/TvSinZoomDesc"
@@ -56,20 +58,19 @@
         android:layout_marginBottom="8dp"
         android:text="TextView"
         android:textColor="@color/BASE2"
-        app:layout_constraintBottom_toTopOf="@+id/ImvSinZoom"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TvSinZoomData" />
+        app:layout_constraintTop_toBottomOf="@+id/TvSinZoomHora" />
 
     <ImageView
         android:id="@+id/ImvSinZoom"
-        android:layout_width="0dp"
-        android:layout_height="140dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

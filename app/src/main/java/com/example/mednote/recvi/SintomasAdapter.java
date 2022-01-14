@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mednote.R;
-import com.example.mednote.sinto.SintomaViewHolder;
 import com.example.mednote.sinto.SintomasFragment;
 import com.example.mednote.sinto.SintomasZoomActivity;
 
