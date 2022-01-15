@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/BASE2">
 
     <TextView
         android:id="@+id/TvShPref"
@@ -12,6 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Preferências"
+        android:textColor="@color/BASE"
         android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:buttonTint="@color/BASE"
         android:text="Sintoma"
+        android:textColor="@color/BASE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TvShEnviar" />
 
@@ -32,6 +36,8 @@
         android:layout_height="30dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@color/BASE"
+        android:foregroundTint="@color/BASE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CbSintoma" />
 
@@ -41,7 +47,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:buttonTint="@color/BASE"
         android:text="Tratamento"
+        android:textColor="@color/BASE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SpnSintoma" />
 
@@ -59,7 +67,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/BASE"
         android:text="Compartilhar"
+        android:textColor="@color/BASE2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -71,6 +81,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Enviar:"
+        android:textColor="@color/BASE"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TvShPref" />
@@ -82,6 +93,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Para:"
+        android:textColor="@color/BASE"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SpnTratamento" />

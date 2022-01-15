@@ -1,17 +1,13 @@
 package com.example.mednote;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.graphics.Paint;
-import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,7 +22,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mednote.logi.Config;
-import com.example.mednote.logi.LoginActivity;
 import com.example.mednote.sinto.SintomasFragment;
 import com.example.mednote.trat.TratamentoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -138,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
-        dialog.setContentView(R.layout.share_dialog);
+        dialog.setContentView(R.layout.dialog_share);
 
         //region VIEWS
 
