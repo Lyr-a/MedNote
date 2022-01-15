@@ -89,6 +89,10 @@ public class TratamentoAddActivity extends AppCompatActivity {
                     Toast.makeText(TratamentoAddActivity.this, "Você Precisa inserir um título", Toast.LENGTH_LONG).show();
                     return;
                 }
+                if (TraTitulo.length() > 20){
+                    Toast.makeText(TratamentoAddActivity.this, "O título pode ter 20 letras no máximo", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 String TraDesc = EtTratamentoAddDesc.getText().toString();
                 if (TraDesc.isEmpty()) {

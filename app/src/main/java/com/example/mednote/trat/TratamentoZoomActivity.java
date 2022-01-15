@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mednote.R;
@@ -19,16 +20,14 @@ import java.util.ArrayList;
 public class TratamentoZoomActivity extends AppCompatActivity {
 
     TratamentoZoomAdapter tratamentoZoomAdapter;
-    ArrayList<String> TrzItem = new ArrayList<>();
-    ArrayList<TratamentoZoomItem> teste = new ArrayList<>();
+    ArrayList<TratamentoZoomItem> TzItens = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tratamento_zoom);
         String Title, Desc, Data, Hora;
-
-
+        ArrayList<String> Photos;
 
 
 
@@ -36,38 +35,33 @@ public class TratamentoZoomActivity extends AppCompatActivity {
         TextView TvDesc = findViewById(R.id.TvTraZoomDesc);
         TextView TvData = findViewById(R.id.TvTraZoomData);
         TextView TvHora = findViewById(R.id.TvTraZoomHora);
+        RecyclerView RvPhoto = findViewById(R.id.RvTratZoomPhoto);
+
+
+        tratamentoZoomAdapter = new TratamentoZoomAdapter(TratamentoZoomActivity.this, TzItens);
+        RvPhoto.setHasFixedSize(true);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TratamentoZoomActivity.this, LinearLayoutManager.HORIZONTAL, false);
+        RvPhoto.setLayoutManager(layoutManager);
+        RvPhoto.setAdapter(tratamentoZoomAdapter);
 
         Intent intent = getIntent();
 
-        TrzItem = (intent.getStringArrayListExtra("Photo"));
+        Photos = intent.getStringArrayListExtra("Photo");
         Title = intent.getStringExtra("Titulo");
         Desc = intent.getStringExtra("Desc");
         Data = intent.getStringExtra("Data");
         Hora = intent.getStringExtra("Hora");
 
 
-        tratamentoZoomAdapter = new TratamentoZoomAdapter(TratamentoZoomActivity.this, teste);
-
-        RecyclerView RvPhotos = findViewById(R.id.RvTratZoomPhoto);
-        RvPhotos.setHasFixedSize(true);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(TratamentoZoomActivity.this);
-        RvPhotos.setLayoutManager(layoutManager);
-        RvPhotos.setAdapter(tratamentoZoomAdapter);
-
-        /*
-        for(int i = 0; i< TrzItem.size(); i++){
+        for (String foto : Photos){
             TratamentoZoomItem tratamentoZoomItem = new TratamentoZoomItem();
-            Uri uri = Uri.fromFile(new File(TrzItem.get(i)));
-            tratamentoZoomItem.photo = uri;
-            teste.add(tratamentoZoomItem);
-
-            tratamentoZoomAdapter.notifyItemInserted(TrzItem.size()-1);
+            tratamentoZoomItem.Photo = Uri.fromFile(new File(foto));
+            TzItens.add(tratamentoZoomItem);
         }
 
 
-         */
-        tratamentoZoomAdapter.notifyItemInserted(TrzItem.size()-1);
+
         TvTitle.setText(Title);
         TvDesc.setText(Desc);
         TvData.setText(Data);

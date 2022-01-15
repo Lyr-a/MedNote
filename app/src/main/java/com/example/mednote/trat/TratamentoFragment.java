@@ -175,9 +175,9 @@ public class TratamentoFragment extends Fragment {
                     novoTratamento.Hora = THora;
                     novoTratamento.Photos = TPhotos;
 
-                    TraItens.add(novoTratamento);
+                    TraItens.add(0, novoTratamento);
 
-                    tratamentoAdapter.notifyItemInserted(TraItens.size()-1);
+                    tratamentoAdapter.notifyItemInserted(0);
                 }
             }
         }

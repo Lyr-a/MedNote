@@ -109,6 +109,8 @@ public class SintomasFragment extends Fragment {
 
         //endregion
 
+        /*
+
         //region DADOS FANTASIA
 
         SintomasItem novoSintoma1 = new SintomasItem();
@@ -141,6 +143,9 @@ public class SintomasFragment extends Fragment {
         SinItens.add(novoSintoma7);
 
         //endregion
+
+
+         */
 
         BtnNewSintoma.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,9 +184,9 @@ public class SintomasFragment extends Fragment {
                         novoSintoma.Data = SDia;
                         novoSintoma.Hora = SHora;
 
-                        SinItens.add(novoSintoma);
+                        SinItens.add(0, novoSintoma);
 
-                        sintomasAdapter.notifyItemInserted(SinItens.size()-1);
+                        sintomasAdapter.notifyItemInserted(0);
                     }
                 }
             }

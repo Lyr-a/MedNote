@@ -11,43 +11,39 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mednote.R;
 import com.example.mednote.trat.TratamentoZoomActivity;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class TratamentoZoomAdapter extends RecyclerView.Adapter{
-
-
-    //rodar em torno da lista
+public class TratamentoZoomAdapter extends RecyclerView.Adapter {
 
     TratamentoZoomActivity tratamentoZoomActivity;
-    List<TratamentoZoomItem> TrzItens;
+    ArrayList<TratamentoZoomItem> TzItens;
 
+    public TratamentoZoomAdapter(TratamentoZoomActivity tratamentoZoomActivity, ArrayList<TratamentoZoomItem> TzItens){
 
-    public TratamentoZoomAdapter(TratamentoZoomActivity tratamentoZoomAdapter, List<TratamentoZoomItem> TrzItens) {
-        this.TrzItens = TrzItens;
-        this.tratamentoZoomActivity = tratamentoZoomAdapter;
+        this.tratamentoZoomActivity = tratamentoZoomActivity;
+        this.TzItens = TzItens;
+
     }
-
-
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater TrzInflater;
-        TrzInflater = LayoutInflater.from(tratamentoZoomActivity);
-        View v = TrzInflater.inflate(R.layout.item_zoom_trat_list, parent, false);
-        return new TratamentoViewHolder(v);
+        LayoutInflater TzInflater;
+        TzInflater = LayoutInflater.from(tratamentoZoomActivity);
+        View v = TzInflater.inflate(R.layout.item_zoom_trat_list, parent, false);
+        return new TratamentoZoomViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        TratamentoZoomItem tratamentoZoomItem = TrzItens.get(position);
+        TratamentoZoomItem tratamentoZoomItem = TzItens.get(position);
         View v = holder.itemView;
         ImageView imageView = v.findViewById(R.id.ImvTratZoom);
-        imageView.setImageURI(tratamentoZoomItem.photo);
+        imageView.setImageURI(tratamentoZoomItem.Photo);
     }
 
     @Override
     public int getItemCount() {
-        return TrzItens.size() - 1;
+        return TzItens.size();
     }
 }

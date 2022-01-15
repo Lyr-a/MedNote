@@ -61,19 +61,14 @@ public class TratamentoAdapter extends RecyclerView.Adapter {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                ArrayList<Uri> teste = new ArrayList<>();
-                for (int i = 0; i < tratamentoItem.Photos.size(); i++){
-                    teste.add(Uri.fromFile(new File(tratamentoItem.Photos.get(i))));
-                }
-
-                 */
                 Intent intent = new Intent(tratamentoFragment.getContext(), TratamentoZoomActivity.class);
                 intent.putExtra("Titulo", tratamentoItem.Title);
                 intent.putExtra("Desc", tratamentoItem.Desc);
                 intent.putExtra("Data", tratamentoItem.Data);
                 intent.putExtra("Hora", tratamentoItem.Hora);
                 intent.putStringArrayListExtra("Photo", tratamentoItem.Photos);
+
+
                 tratamentoFragment.getContext().startActivity(intent);
             }
         });
