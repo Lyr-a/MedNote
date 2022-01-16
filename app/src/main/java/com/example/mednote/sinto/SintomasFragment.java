@@ -40,7 +40,7 @@ public class SintomasFragment extends Fragment {
 
 
     static int NEW_ITEM_REQUEST = 1;
-    List<SintomasItem> SinItens = new ArrayList<>();
+    public List<SintomasItem> SinItens = new ArrayList<>();
     SintomasAdapter sintomasAdapter;
     private static final int CREATEPDF = 1;
 

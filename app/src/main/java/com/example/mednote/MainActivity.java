@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,10 +24,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mednote.logi.Config;
+import com.example.mednote.recvi.SintomasItem;
+import com.example.mednote.recvi.TratamentoItem;
 import com.example.mednote.sinto.SintomasFragment;
 import com.example.mednote.trat.TratamentoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -191,15 +196,47 @@ public class MainActivity extends AppCompatActivity {
                     if(CbTra.isChecked()){
                         DiaInfo.set(3,"1");
                     }
-                    dialog.dismiss();
 
-                    shareGmail(DiaInfo);
+                    dialog.dismiss();
+                    ArrayList<TratamentoItem> Tra = new ArrayList<>();
+                    ArrayList<SintomasItem> Sin = new ArrayList<>();
+                    CreatePdf(DiaInfo, Tra, Sin);
+
+
 
                 }
             }
         });
 
         dialog.show();
+    }
+
+    private void CreatePdf(ArrayList<String> diaInfo, ArrayList<TratamentoItem> Tra, ArrayList<SintomasItem> Sin){
+
+        //region TAMANHO
+
+        int tamanho = 1;
+
+        if (diaInfo.get(2).equals("1")){
+            for (int i = 0; i <= Sin.size(); i+=4){
+                tamanho++;
+            }
+        }
+        if (diaInfo.get(3).equals("1")){
+            for (int i = 0; i <= Tra.size(); i+=4){
+                tamanho++;
+            }
+        }
+
+        //endregion
+
+        PdfDocument pdf = new PdfDocument();
+        Paint paint = new Paint();
+
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(400,600,tamanho).create();
+        //PdfDocument.Page
+
+
     }
 
 }

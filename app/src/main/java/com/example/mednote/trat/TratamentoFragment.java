@@ -35,7 +35,7 @@ public class TratamentoFragment extends Fragment {
 
 
     static int NEW_ITEM_REQUEST = 1;
-    List<TratamentoItem> TraItens = new ArrayList<>();
+    public List<TratamentoItem> TraItens = new ArrayList<>();
     TratamentoAdapter tratamentoAdapter;
 
     //region BARULHO

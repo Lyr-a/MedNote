@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/EtRegisterPassword" />
 
     <EditText
-        android:id="@+id/EtRegisterEmergencyNumber"
+        android:id="@+id/EtRegisterNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -140,7 +140,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EtRegisterEmergencyNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/EtRegisterNumber" />
 
     <Spinner
         android:id="@+id/SpnRegisterGender"
