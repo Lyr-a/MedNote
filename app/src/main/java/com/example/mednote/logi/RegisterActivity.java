@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mednote.R;
@@ -24,6 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //region Views
 
+        //TextView TvData
         EditText EtCpf = findViewById(R.id.EtRegisterCpf);
         EditText EtNome = findViewById(R.id.EtRegisterName);
         //EditText EtData = findViewById(R.id.EtRegisterData);
@@ -80,13 +82,17 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 if (Cpf.isEmpty() || Nome.isEmpty() || Senha.isEmpty() || Senha2.isEmpty() || Numero.isEmpty()){
+
                     Toast.makeText(RegisterActivity.this, "insira todos os dados", Toast.LENGTH_SHORT).show();
                     return;
+
                 }
 
                 if (!Senha.equals(Senha2)){
+
                     Toast.makeText(RegisterActivity.this, "As senhas não batem", Toast.LENGTH_SHORT).show();
                     return;
+
                 }
 
 
