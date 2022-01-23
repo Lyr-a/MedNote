@@ -35,7 +35,12 @@ public class SintomasZoomActivity extends AppCompatActivity {
         Dia = intent.getStringExtra("Data");
         Hora = intent.getStringExtra("Hora");
 
-        Imv.setImageURI(Im);
+        if (Im == null){
+            Imv.setImageResource(R.drawable.ic_not_image);
+        }
+        else{
+            Imv.setImageURI(Im);
+        }
         TvTitle.setText(Title);
         TvDesc.setText(Desc);
         TvData.setText(Dia);

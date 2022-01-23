@@ -16,8 +16,11 @@ import android.widget.Toast;
 
 import com.example.mednote.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -142,7 +145,6 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         month++;
         TextView TvData = findViewById(R.id.TvData);
-
         if (month<10){
             String Mon = "0" + month;
             Dat = dayOfMonth + "/" + Mon + "/" + year;
@@ -151,6 +153,5 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
             Dat = dayOfMonth + "/" + month + "/" + year;
         }
         TvData.setText(Dat);
-
     }
 }

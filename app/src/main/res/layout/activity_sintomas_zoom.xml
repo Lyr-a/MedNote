@@ -22,7 +22,7 @@
         app:layout_constraintBottom_toTopOf="@+id/TvSinZoomDesc"
         app:layout_constraintEnd_toStartOf="@+id/TvSinZoomHora"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ImvSinZoom" />
 
     <TextView
         android:id="@+id/TvSinZoomData"
@@ -34,7 +34,7 @@
         android:textColor="@color/BASE2"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ImvSinZoom" />
 
     <TextView
         android:id="@+id/TvSinZoomHora"
@@ -66,11 +66,13 @@
 
     <ImageView
         android:id="@+id/ImvSinZoom"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="0dp"
+        android:layout_height="270dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
