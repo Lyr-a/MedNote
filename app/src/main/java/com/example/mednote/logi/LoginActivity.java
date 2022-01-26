@@ -10,8 +10,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mednote.HttpRequest;
 import com.example.mednote.MainActivity;
+import com.example.mednote.PonteActivity;
 import com.example.mednote.R;
+import com.example.mednote.Util;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -30,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
 
         //endregion
 
+
+
         //region BOTÕES
 
         BtnLoginRegister.setOnClickListener(new View.OnClickListener() {
@@ -39,38 +52,58 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(registro, RESULT);
             }
         });
+
         BtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String Cpf, Pass;
+                String login, password;
 
-                Cpf = EtLoginCpf.getText().toString();
-                Pass = EtLoginPassword.getText().toString();
-                Config.setLogin(LoginActivity.this, Cpf);
-                Config.setPassword(LoginActivity.this, Pass);
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                /*
-                if (Cpf.equals("1234") && Pass.equals("adm")) {
-                    int L = 1;
-                    Intent login = new Intent();
-                    login.putExtra("CPF", Cpf);
-                    login.putExtra("Pass", Pass);
-                    login.putExtra("Login", L);
-                    setResult(Activity.RESULT_OK);
-                    finish();
+                login = EtLoginCpf.getText().toString();
+                password = EtLoginPassword.getText().toString();
 
-                }
-                else{
-                    Toast.makeText(LoginActivity.this, "Digite as credenciais corretas", Toast.LENGTH_SHORT).show();
-                }
-                 */
+                ExecutorService executorService = Executors.newSingleThreadExecutor();
+                executorService.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        HttpRequest httpRequest = new HttpRequest(Config.SERVER_URL_BASE + "login.php", "POST", "UTF-8");
+                        httpRequest.setBasicAuth(login, password);
+
+                        try {
+                            InputStream is = httpRequest.execute();
+                            String result = Util.inputStream2String(is, "UTF-8");
+                            httpRequest.finish();
+
+                            JSONObject jsonObject = new JSONObject(result);
+                            final int success = jsonObject.getInt("success");
+                            if(success == 1) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Config.setLogin(LoginActivity.this, login);
+                                        Config.setPassword(LoginActivity.this, password);
+                                        Toast.makeText(LoginActivity.this, "Login realizado com sucesso", Toast.LENGTH_LONG).show();
+                                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(i);
+                                    }
+                                });
+                            }
+                            else {
+                                final String error = jsonObject.getString("error");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(LoginActivity.this, error, Toast.LENGTH_LONG).show();
+                                    }
+
+                                });
+                            }
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         });
-
-
-        //endregion
-
     }
 }

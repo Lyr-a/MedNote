@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 public class Config {
 
+    static String SERVER_URL_BASE = "https://med-note.herokuapp.com/";
+
     public static void setLogin(Context context, String login) {
         SharedPreferences mPrefs = context.getSharedPreferences("configs", 0);
         SharedPreferences.Editor mEditor = mPrefs.edit();

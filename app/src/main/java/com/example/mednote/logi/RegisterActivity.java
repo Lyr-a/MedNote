@@ -14,14 +14,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mednote.HttpRequest;
 import com.example.mednote.R;
+import com.example.mednote.Util;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class RegisterActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -121,9 +130,53 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
 
                 //endregion
 
-                Intent intent = new Intent();
+                ExecutorService executorService = Executors.newSingleThreadExecutor();
+                executorService.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        HttpRequest httpRequest = new HttpRequest(Config.SERVER_URL_BASE + "create_pessoa.php", "POST", "UTF-8");
 
-                finish();
+                        httpRequest.addParam("cpf", Cpf);
+                        httpRequest.addParam("senha", Senha);
+                        httpRequest.addParam("nome", Nome);
+                        httpRequest.addParam("genero", Genero);
+                        httpRequest.addParam("tipo_sang", Sangue);
+                        httpRequest.addParam("data_nasc", Dat);
+                        httpRequest.addParam("num_emer", Numero);
+
+                        try {
+                            InputStream is = httpRequest.execute();
+                            String result = Util.inputStream2String(is, "UTF-8");
+                            httpRequest.finish();
+
+                            JSONObject jsonObject = new JSONObject(result);
+                            final int success = jsonObject.getInt("success");
+                            if(success == 1) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(RegisterActivity.this, "Registro realizado com sucesso", Toast.LENGTH_LONG).show();
+                                        Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                                        startActivity(i);
+                                    }
+                                });
+                            }
+                            else {
+                                final String error = jsonObject.getString("error");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(RegisterActivity.this, error, Toast.LENGTH_LONG).show();
+                                    }
+
+                                });
+                            }
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
             }
         });
 

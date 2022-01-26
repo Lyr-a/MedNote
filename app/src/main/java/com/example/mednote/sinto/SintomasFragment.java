@@ -95,6 +95,8 @@ public class SintomasFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_sintomas, container, false);
 
+        //login
+
         FloatingActionButton BtnNewSintoma = v.findViewById(R.id.FbtnSintomasCreate);
 
         //region RECYCLER VIEW
@@ -146,6 +148,8 @@ public class SintomasFragment extends Fragment {
 
 
          */
+
+
 
         BtnNewSintoma.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -18,6 +18,9 @@ public class SintomasZoomActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sintomas_zoom);
+
+ 
+
         Uri Im;
         String Title, Desc, Dia, Hora;
 
