@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
@@ -32,6 +35,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,6 +58,28 @@ public class MainActivity extends AppCompatActivity {
         //endregion
 
         setSupportActionBar(TbMain);
+
+        /*
+        MainViewModel mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        LiveData<List<SintomasItem>> sintomas = mainViewModel.getSintomas();
+        LiveData<List<TratamentoItem>> tratamento = mainViewModel.getTratamentos();
+
+        sintomas.observe(this, new Observer<List<SintomasItem>>() {
+            @Override
+            public void onChanged(List<SintomasItem> sintomasItems) {
+
+            }
+        });
+
+        tratamento.observe(this, new Observer<List<TratamentoItem>>() {
+            @Override
+            public void onChanged(List<TratamentoItem> tratamentoItems) {
+
+            }
+        });
+
+         */
+
 
         //region BOTTOMNAV
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

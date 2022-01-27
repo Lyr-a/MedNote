@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.app.Activity;
@@ -23,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.mednote.AddSinViewModel;
 import com.example.mednote.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -55,6 +57,10 @@ public class SintomasAddActivity extends AppCompatActivity {
 
         Button BtnSintomasAdd = findViewById(R.id.BtnSintomasAdd);
         FloatingActionButton BtnSinAddPhoto = findViewById(R.id.FbtnSintomaAddImage);
+
+        AddSinViewModel addSinViewModel = new ViewModelProvider(this).get(AddSinViewModel.class);
+        String currentPhotoPath = addSinViewModel.getCurrentPhotoPath();
+
 
         BtnSinAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override

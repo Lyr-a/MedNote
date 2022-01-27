@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -45,7 +46,6 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
 
         EditText EtCpf = findViewById(R.id.EtRegisterCpf);
         EditText EtNome = findViewById(R.id.EtRegisterName);
-        //EditText EtData = findViewById(R.id.EtRegisterData);
         EditText EtSenha = findViewById(R.id.EtRegisterPassword);
         EditText EtSenha2 = findViewById(R.id.EtRegisterPasswordRpt);
         EditText EtNumero = findViewById(R.id.EtRegisterNumber);
@@ -80,8 +80,11 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
             public void onClick(View v) {
                 String Cpf, Nome, Senha, Senha2, Numero, Genero, Sangue;
 
+
+
                 //region FILTRO
 
+                //Log.d("testeeee", Dat);
                 Genero = SpnGenero.getSelectedItem().toString();
                 Sangue = SpnRegisterBloodType.getSelectedItem().toString();
                 Cpf = EtCpf.getText().toString();
@@ -91,7 +94,7 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                 Numero = EtNumero.getText().toString();
 
 
-                if (Dat.isEmpty()){
+                if (Dat == null){
 
                     Toast.makeText(RegisterActivity.this, "Insira uma data de aniversário clicando no botão", Toast.LENGTH_SHORT).show();
                     return;
@@ -143,6 +146,8 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                         httpRequest.addParam("tipo_sang", Sangue);
                         httpRequest.addParam("data_nasc", Dat);
                         httpRequest.addParam("num_emer", Numero);
+
+
 
                         try {
                             InputStream is = httpRequest.execute();

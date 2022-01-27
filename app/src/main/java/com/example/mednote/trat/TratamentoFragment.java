@@ -16,15 +16,27 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.mednote.HttpRequest;
 import com.example.mednote.R;
+import com.example.mednote.Util;
+import com.example.mednote.logi.Config;
 import com.example.mednote.recvi.TratamentoAdapter;
 import com.example.mednote.recvi.TratamentoItem;
 import com.example.mednote.sinto.SintomasAddActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -104,6 +116,130 @@ public class TratamentoFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         RvTratamento.setLayoutManager(layoutManager);
         RvTratamento.setAdapter(tratamentoAdapter);
+
+
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                HttpRequest httpRequest = new HttpRequest(Config.SERVER_URL_BASE + "get_all_tratamentos.php", "GET", "UTF-8");
+                httpRequest.setBasicAuth( Config.getLogin(getContext()), Config.getPassword(getContext()));
+
+                try {
+                    InputStream is = httpRequest.execute();
+                    String result = Util.inputStream2String(is, "UTF-8");
+                    httpRequest.finish();
+
+                    JSONObject jsonObject = new JSONObject(result);
+                    //JSONArray jsonArray = new JSONArray(result);
+                    final int success = jsonObject.getInt("success");
+
+                    if(getActivity() == null){
+                        return;
+                    }
+                    if(success == 1) {
+
+
+                        JSONArray jsonArray = jsonObject.getJSONArray("Tratamento");
+                        //Log.e("AAAAAAAAAAAAAAAAAAAAAAA", String.valueOf(jsonArray.length()));
+                        //int i = 0; i < jsonArray.length();i++
+
+                        for (int i = jsonArray.length()-1; i > - 1 ;i--){
+
+                            ArrayList<String> photos = new ArrayList<>();
+                            String titulo, desc, data, hora = "";
+                            TratamentoItem novoTratamento = new TratamentoItem();
+                            JSONObject tratamento = jsonArray.getJSONObject(i);
+
+                            titulo = tratamento.getString("tratamento_title");
+                            desc = tratamento.getString("tratamento_desc");
+                            data = tratamento.getString("tratamento_data");
+                            hora = tratamento.getString("tratamento_hora");
+
+                            novoTratamento.Title = titulo;
+                            novoTratamento.Desc = desc;
+                            novoTratamento.Data = data;
+                            novoTratamento.Hora = hora;
+                            novoTratamento.Photos = photos;
+
+                            TraItens.add(novoTratamento);
+
+                            tratamentoAdapter.notifyItemInserted(TraItens.size()-1);
+                        }
+                        /*
+                        JSONArray jsonArray = jsonObject.getJSONArray("Sintoma");
+                        Log.e("AAAAAAAAAAAAAAAAAAAAAAA", String.valueOf(jsonArray));
+                        JSONObject sintoma = jsonArray.getJSONObject(0);
+                        Log.e("AAAAAAAAAAAAAAAAAAAAAAA", String.valueOf(sintoma));
+                        String titulo = sintoma.getString("sintoma_title");
+                        Log.e("AAAAAAAAAAAAAAAAAAAAAAA", titulo);
+                        String desc = sintoma.getString("id_sintoma");
+                        Log.e("AAAAAAAAAAAAAAAAAAAAAAA", desc);
+                        SintomasItem novoSintoma1 = new SintomasItem();
+                        novoSintoma1.Title = titulo;
+                        novoSintoma1.Desc = desc;
+                        SinItens.add(novoSintoma1);
+                        sintomasAdapter.notifyItemInserted(SinItens.size()-1);
+                         */
+
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                                //textView.setText(teste);
+
+                            }
+                        });
+                    }
+                    else {
+                        final String error = jsonObject.getString("error");
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
+                            }
+
+                        });
+                    }
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+
+                /*
+                try {
+                    InputStream is = httpRequest.execute();
+                    String result = Util.inputStream2String(is, "UTF-8");
+                    httpRequest.finish();
+
+                    JSONObject jsonObject = new JSONObject(result);
+                    final int success = jsonObject.getInt("success");
+                    if(success == 1) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+
+                            }
+                        });
+                    }
+
+                    else {
+                        final String error = jsonObject.getString("error");
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
+                            }
+
+                        });
+                    }
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                 */
+            }
+        });
 
         //endregion
 
