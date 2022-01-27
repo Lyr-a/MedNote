@@ -11,16 +11,6 @@
         android:layout_height="match_parent"
         android:background="#CEEDED">
 
-        <TextView
-            android:id="@+id/tvTeste"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/RvSintomaFragment" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RvSintomaFragment"
             android:layout_width="0dp"

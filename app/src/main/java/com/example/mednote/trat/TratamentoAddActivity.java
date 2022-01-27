@@ -22,16 +22,26 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.mednote.HttpRequest;
+import com.example.mednote.MainActivity;
 import com.example.mednote.R;
+import com.example.mednote.Util;
+import com.example.mednote.logi.Config;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class TratamentoAddActivity extends AppCompatActivity {
 
@@ -99,15 +109,68 @@ public class TratamentoAddActivity extends AppCompatActivity {
                     Toast.makeText(TratamentoAddActivity.this, "Você Precisa inserir uma descrição", Toast.LENGTH_LONG).show();
                     return;
                 }
-
+                /*
                 Intent intent = new Intent();
                 intent.putExtra("TraTitle", TraTitulo);
                 intent.putExtra("TraDesc", TraDesc);
                 intent.putExtra("TraHora", Hora);
                 intent.putExtra("TraDia", Dia);
                 intent.putStringArrayListExtra("TraPhotos", (ArrayList<String>) photos);
-                setResult(Activity.RESULT_OK, intent);
-                finish();
+
+                 */
+
+                ExecutorService executorService = Executors.newSingleThreadExecutor();
+                executorService.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        HttpRequest httpRequest = new HttpRequest(
+                                Config.SERVER_URL_BASE + "create_tratamento.php", "POST", "UTF-8");
+
+
+                        String cpf = Config.getLogin(TratamentoAddActivity.this);
+                        httpRequest.addParam("cpf", cpf);
+                        httpRequest.addParam("tratamento_title", TraTitulo);
+                        httpRequest.addParam("tratamento_desc", TraDesc);
+                        httpRequest.addParam("tratamento_data", Dia);
+                        httpRequest.addParam("tratamento_hora", Hora);
+
+
+
+
+                        try {
+                            InputStream is = httpRequest.execute();
+                            String result = Util.inputStream2String(is, "UTF-8");
+                            httpRequest.finish();
+
+                            JSONObject jsonObject = new JSONObject(result);
+                            final int success = jsonObject.getInt("success");
+                            if(success == 1) {
+                                runOnUiThread(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(TratamentoAddActivity.this, MainActivity.class);
+                                        startActivity(intent);
+
+                                    }
+                                });
+                            }
+                            else {
+                                final String error = jsonObject.getString("error");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(TratamentoAddActivity.this, error, Toast.LENGTH_LONG).show();
+                                    }
+
+                                });
+                            }
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
             }
         });
     }

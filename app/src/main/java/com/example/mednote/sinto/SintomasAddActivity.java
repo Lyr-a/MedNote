@@ -25,16 +25,26 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.mednote.AddSinViewModel;
+import com.example.mednote.HttpRequest;
+import com.example.mednote.MainActivity;
 import com.example.mednote.R;
+import com.example.mednote.Util;
+import com.example.mednote.logi.Config;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SintomasAddActivity extends AppCompatActivity {
 
@@ -79,6 +89,8 @@ public class SintomasAddActivity extends AppCompatActivity {
                 String Dia = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
                 String SinTitulo = EtSintomaAddTitle.getText().toString();
+                String SinDesc = EtSintomaAddDesc.getText().toString();
+
                 if (SinTitulo.isEmpty()){
                     Toast.makeText(SintomasAddActivity.this, "Você Precisa inserir um título", Toast.LENGTH_SHORT).show();
                     return;
@@ -89,7 +101,7 @@ public class SintomasAddActivity extends AppCompatActivity {
                     return;
                 }
 
-                String SinDesc = EtSintomaAddDesc.getText().toString();
+
                 if (SinDesc.isEmpty()){
                     Toast.makeText(SintomasAddActivity.this, "Você Precisa inserir uma descrição", Toast.LENGTH_SHORT).show();
                     return;
@@ -99,14 +111,66 @@ public class SintomasAddActivity extends AppCompatActivity {
                 if (photos.size()>0){
                     intent.setData (Uri.fromFile(new File(currentPhotoPath)));
                 }
+
+                /*
                 intent.putExtra("SinTitle", SinTitulo);
                 intent.putExtra("SinDesc", SinDesc);
                 intent.putExtra("SinHora", Hora);
                 intent.putExtra("SinDia", Dia);
 
-                setResult(Activity.RESULT_OK, intent);
-                finish();
+                 */
 
+
+                ExecutorService executorService = Executors.newSingleThreadExecutor();
+                executorService.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        HttpRequest httpRequest = new HttpRequest(
+                                Config.SERVER_URL_BASE + "create_sintoma.php", "POST", "UTF-8");
+
+
+                        httpRequest.addParam("cpf", Config.getLogin(SintomasAddActivity.this));
+                        httpRequest.addParam("sintoma_title", SinTitulo);
+                        httpRequest.addParam("sintoma_desc", SinDesc);
+                        httpRequest.addParam("sintoma_data", Dia);
+                        httpRequest.addParam("sintoma_hora", Hora);
+
+
+
+
+                        try {
+                            InputStream is = httpRequest.execute();
+                            String result = Util.inputStream2String(is, "UTF-8");
+                            httpRequest.finish();
+
+                            JSONObject jsonObject = new JSONObject(result);
+                            final int success = jsonObject.getInt("success");
+                            if(success == 1) {
+                                runOnUiThread(new Runnable() {
+
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(SintomasAddActivity.this, "Sintoma realizado com sucesso", Toast.LENGTH_LONG).show();
+                                        Intent intent1 = new Intent(SintomasAddActivity.this, MainActivity.class);
+                                        startActivity(intent1);
+                                    }
+                                });
+                            }
+                            else {
+                                final String error = jsonObject.getString("error");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(SintomasAddActivity.this, error, Toast.LENGTH_LONG).show();
+                                    }
+
+                                });
+                            }
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
             }
         });

@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mednote.HttpRequest;
@@ -103,7 +104,6 @@ public class TratamentoFragment extends Fragment {
         FloatingActionButton FbtnTratamentoCreate = v.findViewById(R.id.FbtnTratamentoCreate);
 
 
-
         //endregion
 
         //region RECYCLER VIEW
@@ -131,7 +131,6 @@ public class TratamentoFragment extends Fragment {
                     httpRequest.finish();
 
                     JSONObject jsonObject = new JSONObject(result);
-                    //JSONArray jsonArray = new JSONArray(result);
                     final int success = jsonObject.getInt("success");
 
                     if(getActivity() == null){
@@ -141,8 +140,6 @@ public class TratamentoFragment extends Fragment {
 
 
                         JSONArray jsonArray = jsonObject.getJSONArray("Tratamento");
-                        //Log.e("AAAAAAAAAAAAAAAAAAAAAAA", String.valueOf(jsonArray.length()));
-                        //int i = 0; i < jsonArray.length();i++
 
                         for (int i = jsonArray.length()-1; i > - 1 ;i--){
 
@@ -166,21 +163,6 @@ public class TratamentoFragment extends Fragment {
 
                             tratamentoAdapter.notifyItemInserted(TraItens.size()-1);
                         }
-                        /*
-                        JSONArray jsonArray = jsonObject.getJSONArray("Sintoma");
-                        Log.e("AAAAAAAAAAAAAAAAAAAAAAA", String.valueOf(jsonArray));
-                        JSONObject sintoma = jsonArray.getJSONObject(0);
-                        Log.e("AAAAAAAAAAAAAAAAAAAAAAA", String.valueOf(sintoma));
-                        String titulo = sintoma.getString("sintoma_title");
-                        Log.e("AAAAAAAAAAAAAAAAAAAAAAA", titulo);
-                        String desc = sintoma.getString("id_sintoma");
-                        Log.e("AAAAAAAAAAAAAAAAAAAAAAA", desc);
-                        SintomasItem novoSintoma1 = new SintomasItem();
-                        novoSintoma1.Title = titulo;
-                        novoSintoma1.Desc = desc;
-                        SinItens.add(novoSintoma1);
-                        sintomasAdapter.notifyItemInserted(SinItens.size()-1);
-                         */
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -204,78 +186,8 @@ public class TratamentoFragment extends Fragment {
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
-
-                /*
-                try {
-                    InputStream is = httpRequest.execute();
-                    String result = Util.inputStream2String(is, "UTF-8");
-                    httpRequest.finish();
-
-                    JSONObject jsonObject = new JSONObject(result);
-                    final int success = jsonObject.getInt("success");
-                    if(success == 1) {
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-
-                            }
-                        });
-                    }
-
-                    else {
-                        final String error = jsonObject.getString("error");
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
-                            }
-
-                        });
-                    }
-                } catch (IOException | JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-                 */
             }
         });
-
-        //endregion
-
-        //region DADOS FANTASIA
-
-        /*
-        TratamentoItem novoTratamento1 = new TratamentoItem();
-        novoTratamento1.Title = "TRATAMENTO 1";
-        novoTratamento1.Desc = "DESCRIÇÃO 1";
-        TraItens.add(novoTratamento1);
-        TratamentoItem novoTratamento2 = new TratamentoItem();
-        novoTratamento2.Title = "TRATAMENTO 2";
-        novoTratamento2.Desc = "DESCRIÇÃO 2";
-        TraItens.add(novoTratamento2);
-        TratamentoItem novoTratamento3 = new TratamentoItem();
-        novoTratamento3.Title = "TRATAMENTO 3";
-        novoTratamento3.Desc = "DESCRIÇÃO 3";
-        TraItens.add(novoTratamento3);
-        TratamentoItem novoTratamento4 = new TratamentoItem();
-        novoTratamento4.Title = "TRATAMENTO 4";
-        novoTratamento4.Desc = "DESCRIÇÃO 4";
-        TraItens.add(novoTratamento4);
-        TratamentoItem novoTratamento5 = new TratamentoItem();
-        novoTratamento5.Title = "TRATAMENTO 5";
-        novoTratamento5.Desc = "DESCRIÇÃO 5";
-        TraItens.add(novoTratamento5);
-        TratamentoItem novoTratamento6 = new TratamentoItem();
-        novoTratamento6.Title = "TRATAMENTO 6";
-        novoTratamento6.Desc = "DESCRIÇÃO 6";
-        TraItens.add(novoTratamento6);
-        TratamentoItem novoTratamento7 = new TratamentoItem();
-        novoTratamento7.Title = "TRATAMENTO 7";
-        novoTratamento7.Desc = "DESCRIÇÃO 7";
-        TraItens.add(novoTratamento7);
-
-         */
 
         //endregion
 
@@ -283,7 +195,7 @@ public class TratamentoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getActivity(), TratamentoAddActivity.class);
-                startActivityForResult(i, NEW_ITEM_REQUEST);
+                startActivity(i);
             }
         });
 
@@ -291,31 +203,4 @@ public class TratamentoFragment extends Fragment {
     }
 
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == NEW_ITEM_REQUEST){
-            if (resultCode == Activity.RESULT_OK){
-                if (data != null) {
-                    String TTitle = data.getStringExtra("TraTitle");
-                    String TDesc = data.getStringExtra("TraDesc");
-                    String TDia = data.getStringExtra("TraDia");
-                    String THora = data.getStringExtra("TraHora");
-                    ArrayList<String> TPhotos = data.getStringArrayListExtra("TraPhotos");
-
-                    TratamentoItem novoTratamento = new TratamentoItem();
-
-                    novoTratamento.Title = TTitle;
-                    novoTratamento.Desc = TDesc;
-                    novoTratamento.Data = TDia;
-                    novoTratamento.Hora = THora;
-                    novoTratamento.Photos = TPhotos;
-
-                    TraItens.add(0, novoTratamento);
-
-                    tratamentoAdapter.notifyItemInserted(0);
-                }
-            }
-        }
-    }
 }
