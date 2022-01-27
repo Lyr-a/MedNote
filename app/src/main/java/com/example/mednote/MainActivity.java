@@ -168,6 +168,9 @@ public class MainActivity extends AppCompatActivity {
                             data = tratamento.getString("tratamento_data");
                             hora = tratamento.getString("tratamento_hora");
 
+                            titulo.trim();
+                            desc.trim();
+
                             novoTratamento.Title = titulo;
                             novoTratamento.Desc = desc;
                             novoTratamento.Data = data;

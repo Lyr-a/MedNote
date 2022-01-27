@@ -153,8 +153,8 @@ public class TratamentoFragment extends Fragment {
                             data = tratamento.getString("tratamento_data");
                             hora = tratamento.getString("tratamento_hora");
 
-                            novoTratamento.Title = titulo;
-                            novoTratamento.Desc = desc;
+                            novoTratamento.Title = titulo.trim();
+                            novoTratamento.Desc = desc.trim();
                             novoTratamento.Data = data;
                             novoTratamento.Hora = hora;
                             novoTratamento.Photos = photos;

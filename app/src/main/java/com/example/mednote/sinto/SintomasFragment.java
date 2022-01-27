@@ -144,7 +144,7 @@ public class SintomasFragment extends Fragment {
                             hora = sintoma.getString("sintoma_hora");
 
                             novoSintoma.Title = titulo.trim();
-                            novoSintoma.Desc = desc;
+                            novoSintoma.Desc = desc.trim();
                             novoSintoma.Data = data;
                             novoSintoma.Hora = hora;
 
