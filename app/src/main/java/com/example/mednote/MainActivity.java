@@ -442,10 +442,14 @@ public class MainActivity extends AppCompatActivity {
             texto += "\n*                                Sintomas";
             for (int i = 0 ; sintomas.size() > i ; i++){
 
-                String sin, title, desc;
+                String sin, title, desc, data, hora;
                 title = sintomas.get(i).Title;
                 desc = sintomas.get(i).Desc;
+                hora = sintomas.get(i).Hora;
+                data = sintomas.get(i).Data;
                 sin = "\n*******************************************************************";
+                sin += "\n* Data: " + data;
+                sin += "\n* Hora: " + hora;
                 sin += "\n* Título: " + title;
                 sin += "\n* Descrição: " + desc;
                 texto += sin;
@@ -464,10 +468,14 @@ public class MainActivity extends AppCompatActivity {
             texto += "\n*                                Tratamentos";
             for (int i = 0 ; tratament.size() > i ; i++){
 
-                String tra, title, desc;
+                String tra, title, desc, hora, data;
                 title = tratament.get(i).Title;
                 desc = tratament.get(i).Desc;
+                hora = tratament.get(i).Hora;
+                data = tratament.get(i).Data;
                 tra = "\n*******************************************************************";
+                tra += "\n* Data: " + data;
+                tra += "\n* Hora: " + hora;
                 tra += "\n* Título: " + title;
                 tra += "\n* Descrição: " + desc;
                 texto += tra;
