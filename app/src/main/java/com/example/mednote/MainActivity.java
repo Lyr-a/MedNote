@@ -119,11 +119,11 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }
                     else {
-                        final String error = jsonObject.getString("error");
+                        //final String error = jsonObject.getString("error");
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(MainActivity.this, error, Toast.LENGTH_LONG).show();
+                                //Toast.makeText(MainActivity.this, error, Toast.LENGTH_LONG).show();
                             }
 
                         });

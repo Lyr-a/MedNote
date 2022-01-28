@@ -162,11 +162,11 @@ public class SintomasFragment extends Fragment {
                         });
                     }
                     else {
-                        final String error = jsonObject.getString("error");
+                        //final String error = jsonObject.getString("error");
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
+                                //Toast.makeText(getContext(), error, Toast.LENGTH_LONG).show();
                             }
 
                         });

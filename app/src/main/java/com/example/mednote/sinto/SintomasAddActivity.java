@@ -128,7 +128,7 @@ public class SintomasAddActivity extends AppCompatActivity {
                         httpRequest.addParam("sintoma_desc", SinDesc);
                         httpRequest.addParam("sintoma_data", Dia);
                         httpRequest.addParam("sintoma_hora", Hora);
-                        httpRequest.addFile("sintoma_photo", sintoma_photo);
+                        //httpRequest.addFile("sintoma_photo", sintoma_photo);
 
 
 
