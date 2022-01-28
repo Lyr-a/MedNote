@@ -147,8 +147,6 @@ public class RegisterActivity extends AppCompatActivity implements DatePickerDia
                         httpRequest.addParam("data_nasc", Dat);
                         httpRequest.addParam("num_emer", Numero);
 
-
-
                         try {
                             InputStream is = httpRequest.execute();
                             String result = Util.inputStream2String(is, "UTF-8");

@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Util {
+
     public static int calculateNoOfColumns(Context context, float columnWidthDp) { // For example columnWidthdp=180
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float screenWidthDp = displayMetrics.widthPixels;
@@ -78,10 +79,11 @@ public class Util {
         return sb.toString();
     }
 
-    public static Bitmap base642Bitmap(String myImageData)
-    {
+    public static Bitmap base642Bitmap(String myImageData) {
+
         byte[] imageAsBytes = Base64.decode(myImageData.getBytes(),Base64.DEFAULT);
         return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.mednote;
 
+import android.graphics.Bitmap;
 import android.util.Base64;
 
 import java.io.File;

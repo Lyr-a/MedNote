@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.FileProvider;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
 import android.app.Activity;
@@ -13,6 +13,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,7 +25,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.mednote.AddSinViewModel;
 import com.example.mednote.HttpRequest;
 import com.example.mednote.MainActivity;
 import com.example.mednote.R;
@@ -52,6 +52,7 @@ public class SintomasAddActivity extends AppCompatActivity {
     static int RESULT_REQUEST_PERMISSION = 2;
     List<String> photos = new ArrayList<>();
     String currentPhotoPath;
+    File sintoma_photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class SintomasAddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sintomas_add);
 
         List<String> permissions = new ArrayList<>();
+
 
         permissions.add(Manifest.permission.CAMERA);
         permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -68,8 +70,8 @@ public class SintomasAddActivity extends AppCompatActivity {
         Button BtnSintomasAdd = findViewById(R.id.BtnSintomasAdd);
         FloatingActionButton BtnSinAddPhoto = findViewById(R.id.FbtnSintomaAddImage);
 
-        AddSinViewModel addSinViewModel = new ViewModelProvider(this).get(AddSinViewModel.class);
-        String currentPhotoPath = addSinViewModel.getCurrentPhotoPath();
+        //AddSinViewModel addSinViewModel = new ViewModelProvider(this).get(AddSinViewModel.class);
+        //String currentPhotoPath = addSinViewModel.getCurrentPhotoPath();
 
 
         BtnSinAddPhoto.setOnClickListener(new View.OnClickListener() {
@@ -112,13 +114,6 @@ public class SintomasAddActivity extends AppCompatActivity {
                     intent.setData (Uri.fromFile(new File(currentPhotoPath)));
                 }
 
-                /*
-                intent.putExtra("SinTitle", SinTitulo);
-                intent.putExtra("SinDesc", SinDesc);
-                intent.putExtra("SinHora", Hora);
-                intent.putExtra("SinDia", Dia);
-
-                 */
 
 
                 ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -128,13 +123,12 @@ public class SintomasAddActivity extends AppCompatActivity {
                         HttpRequest httpRequest = new HttpRequest(
                                 Config.SERVER_URL_BASE + "create_sintoma.php", "POST", "UTF-8");
 
-
                         httpRequest.addParam("cpf", Config.getLogin(SintomasAddActivity.this));
                         httpRequest.addParam("sintoma_title", SinTitulo);
                         httpRequest.addParam("sintoma_desc", SinDesc);
                         httpRequest.addParam("sintoma_data", Dia);
                         httpRequest.addParam("sintoma_hora", Hora);
-
+                        httpRequest.addFile("sintoma_photo", sintoma_photo);
 
 
 
@@ -193,6 +187,7 @@ public class SintomasAddActivity extends AppCompatActivity {
         }
 
         currentPhotoPath = f.getAbsolutePath();
+        sintoma_photo = f;
 
         if(f != null){
             Uri fURi = FileProvider.getUriForFile(SintomasAddActivity.this, "com.example.mednote.fileprovider", f);
